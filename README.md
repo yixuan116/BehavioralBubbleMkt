@@ -42,27 +42,22 @@ If bubbles reflect confusion, misunderstanding of fundamental values, or lack of
 
 ## Analysis Framework
 
-Based on behavioral finance literature, this project follows a structured 12-point analysis framework across four analytical layers:
+Based on behavioral finance literature, this project follows a structured analysis framework across four analytical layers:
 
-### Market Layer
-1. **Market Efficiency**: Test H0: bubble mean = 0 vs H1: bubble mean ≠ 0 using one-sample t-test
-2. **Information Structure (A vs B)**: Compare H0: μ_A = μ_B vs H1: μ_A ≠ μ_B using two-sample t-test
-3. **Learning Across Sessions**: Test bubble convergence using one-way ANOVA
-
-### Individual Layer  
-4. **Trader Type Effect**: Compare H0: μ_pro = μ_student vs H1: μ_pro ≠ μ_student
-5. **Dividend Regime**: Analyze wealth effects across dividend levels
-6. **Skill vs Luck**: Test variance differences using F-test
-
-### Outcomes Layer
-7. **Bubble-Profit Link**: Test correlation between bubble size and final payoffs
-8. **Outcome Inequality**: Compare variance between experiments using F-test
-
-### Behaviors Layer
-9. **Aggregate Dynamics**: Test convergence trends using regression analysis
-10. **Behavioral Anchoring**: Compare price adjustment to trades vs fundamentals
-11. **Coordination Failure**: Analyze market-level bubble dispersion
-12. **Aggregate Payoff Efficiency**: Test if market wealth matches theoretical expectations
+| Layer | N | Behavioral Idea | Hypothesis (H0 vs H1) | Test Type | Data Used | Expected Direction/Evidence |
+|-------|---|-----------------|----------------------|-----------|-----------|---------------------------|
+| **Market** | 1 | Market Efficiency | H0: bubble mean = 0 vs H1: bubble mean ≠ 0 | One-sample t-test / Wilcoxon signed-rank | All trades (Price - Fundamental) | If p < 0.05 → Evidence of bubbles (inefficiency) |
+| | 2 | Information Structure (A vs B) | H0: μ_A = μ_B vs H1: μ_A ≠ μ_B | Two-sample t-test / Mann-Whitney U | LastBubble by experiment | Expected μ_B < μ_A → More info = smaller bubbles |
+| | 3 | Learning Across Sessions | H0: bubble means equal across sessions | One-way ANOVA / Kruskal-Wallis | Bubble by Session | Declining trend; later sessions show smaller bubbles |
+| **Individual** | 4 | Trader Type Effect | H0: μ_pro = μ_student vs H1: μ_pro ≠ μ_student | Two-sample t-test / Mann-Whitney U | Final Payoff by TraderType | Expected μ_pro > μ_student → Higher average returns |
+| | 5 | Dividend Regime | H0: μ_highdiv = μ_lowdiv vs H1: μ_highdiv ≠ μ_lowdiv | One-way ANOVA | Final Payoff by Dividend level | μ_highdiv > μ_lowdiv → Structural luck component |
+| | 6 | Skill vs Luck | H0: σ²_within = σ²_expected vs H1: σ²_within ≠ σ²_expected | F-test / Levene's test | Payoff conditional on Dividend | Significant variance differences → Evidence of skill heterogeneity |
+| **Outcomes** | 7 | Bubble-Profit Link | H0: ρ = 0 vs H1: ρ ≠ 0 | Pearson / Spearman correlation | Bubble × Final Payoff | Expected ρ < 0 → Negative relationship |
+| | 8 | Outcome Inequality | H0: Var_A = Var_B vs H1: Var_A ≠ Var_B | Equal variance F-test | Final Payoff by Experiment | Var_A > Var_B → Increased inequality under low info |
+| **Behaviors** | 9 | Aggregate Dynamics | H0: No trend vs H1: Trend exists | Regression of mean bubble on period | Session-level means | Negative β → Learning or self-correction |
+| | 10 | Behavioral Anchoring | H0: β_trade = β_fundamental vs H1: β_trade ≠ β_fundamental | Regression on lagged prices and fundamentals | Period-level panel | β_trade > β_fundamental → Anchoring bias |
+| | 11 | Coordination Failure | H0: Given fundamentals, bubble variance = 0 vs H1: variance > 0 | Variance decomposition / χ² test | Market-level Bubble | Persistent dispersion → Coordination breakdown |
+| | 12 | Aggregate Payoff Efficiency | H0: Payoff mean = Expected fundamental value vs H1: Payoff mean ≠ Expected value | One-sample t-test | Market-mean Final Payoff | Deviation → Systematic inefficiency |
 
 ## Analysis Plan
 
