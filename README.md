@@ -40,11 +40,35 @@ If bubbles reflect confusion, misunderstanding of fundamental values, or lack of
 - `Bubble_Markets_2025.xlsx` - Main dataset in Excel format
 - `Assignment Bubbles in Financial Markets.txt` - Assignment description
 
+## Analysis Framework
+
+Based on behavioral finance literature, this project follows a structured 12-point analysis framework across four analytical layers:
+
+### Market Layer
+1. **Market Efficiency**: Test H0: bubble mean = 0 vs H1: bubble mean ≠ 0 using one-sample t-test
+2. **Information Structure (A vs B)**: Compare H0: μ_A = μ_B vs H1: μ_A ≠ μ_B using two-sample t-test
+3. **Learning Across Sessions**: Test bubble convergence using one-way ANOVA
+
+### Individual Layer  
+4. **Trader Type Effect**: Compare H0: μ_pro = μ_student vs H1: μ_pro ≠ μ_student
+5. **Dividend Regime**: Analyze wealth effects across dividend levels
+6. **Skill vs Luck**: Test variance differences using F-test
+
+### Outcomes Layer
+7. **Bubble-Profit Link**: Test correlation between bubble size and final payoffs
+8. **Outcome Inequality**: Compare variance between experiments using F-test
+
+### Behaviors Layer
+9. **Aggregate Dynamics**: Test convergence trends using regression analysis
+10. **Behavioral Anchoring**: Compare price adjustment to trades vs fundamentals
+11. **Coordination Failure**: Analyze market-level bubble dispersion
+12. **Aggregate Payoff Efficiency**: Test if market wealth matches theoretical expectations
+
 ## Analysis Plan
 
 1. **Game Description**: Explain the trading game, standard economic predictions, and early experimental findings
 2. **Experimental Comparison**: Compare the strengths and weaknesses of Experiment A vs Experiment B
-3. **Statistical Analysis**: Conduct appropriate statistical tests on the chosen experiment
+3. **Statistical Analysis**: Conduct appropriate statistical tests following the 12-point framework
 4. **Critical Reflection**: Evaluate experimental design effectiveness
 5. **Master's Extension**: Propose new hypothesis, design, and analysis plan
 
@@ -61,9 +85,24 @@ If bubbles reflect confusion, misunderstanding of fundamental values, or lack of
 BehavioralBubbleMkt/
 ├── README.md
 ├── Assignment Bubbles in Financial Markets.txt
-├── Bubble_Markets_2025.csv
 ├── Bubble_Markets_2025.xlsx
-└── [analysis scripts and outputs]
+├── Experiment_A_Trading_Data.csv
+├── Experiment_B_Trading_Data.csv
+├── Analysis Scripts/
+│   ├── individual_price_distributions.py
+│   ├── seaborn_price_analysis.py
+│   ├── price_analysis.py
+│   ├── professional_vs_student_analysis.py
+│   └── run_analysis.py
+├── Generated Charts/
+│   ├── experiment_a_price_distribution.png
+│   ├── experiment_b_price_distribution.png
+│   ├── experiments_comparison.png
+│   ├── experiment_a_seaborn_style.png
+│   ├── experiment_b_seaborn_style.png
+│   ├── experiments_seaborn_comparison.png
+│   └── professional_vs_student_seaborn.png
+└── LICENSE
 ```
 
 ## Course Information
@@ -80,9 +119,18 @@ MIT License - see [LICENSE](LICENSE) file for details.
 ## Getting Started
 
 1. Clone the repository
-2. Load the data files (`Bubble_Markets_2025.csv` or `.xlsx`)
+2. Load the data files (`Experiment_A_Trading_Data.csv` and `Experiment_B_Trading_Data.csv`)
 3. Review the assignment description in `Assignment Bubbles in Financial Markets.txt`
-4. Run the analysis scripts (to be added)
+4. Run the analysis scripts:
+   ```bash
+   # Run all analyses
+   python3 run_analysis.py
+   
+   # Or run individual analyses
+   python3 individual_price_distributions.py
+   python3 seaborn_price_analysis.py
+   python3 professional_vs_student_analysis.py
+   ```
 
 ## Contact
 
