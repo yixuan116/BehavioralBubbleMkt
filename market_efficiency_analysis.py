@@ -27,10 +27,10 @@ def load_data():
     df_a = pd.read_csv('Experiment_A_Trading_Data.csv')
     df_b = pd.read_csv('Experiment_B_Trading_Data.csv')
     
-    # Calculate bubble metrics
-    df_a['Bubble'] = df_a['LastPrice'] - df_a['Fundamental']
+    # Calculate bubble metrics using standard formula: Bubble_mt = (P_mt - F_t) / F_t
+    df_a['Bubble'] = (df_a['LastPrice'] - df_a['Fundamental']) / df_a['Fundamental']
     df_a['BubbleRatio'] = df_a['LastPrice'] / df_a['Fundamental']
-    df_b['Bubble'] = df_b['LastPrice'] - df_b['Fundamental']
+    df_b['Bubble'] = (df_b['LastPrice'] - df_b['Fundamental']) / df_b['Fundamental']
     df_b['BubbleRatio'] = df_b['LastPrice'] / df_b['Fundamental']
     
     return df_a, df_b

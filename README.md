@@ -138,13 +138,25 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 - Professional trader share vs bubble size relationship
 
 ### 5 Learning Effects Analysis
-Different learning patterns between experiments:
+
+#### Learning Patterns Between Choice A and Choice B
+**Key Finding**: Choice B shows strong learning effects while Choice A shows none
+
+**Statistical Results**:
+- **Choice A**: No significant learning (p = 0.47, slope = -0.000, R² = 0.001)
+- **Choice B**: Strong learning effect (p < 0.001, slope = -0.098, R² = 0.934)
+- **Session-level bubble decline**: Choice B bubbles decrease from 0.69 to 0.04 across sessions
+
+**Interpretation**:
+- **Students alone (Choice A)**: No learning convergence
+- **Professional + Students (Choice B)**: Strong learning with bubble reduction
+- **Professional trader effect**: Drive learning and price convergence to fundamentals
 
 ![Learning Analysis](learning_analysis.png)
 
 **Figure 4: Learning Across Sessions**
-- Choice A: No significant learning effect (p = 0.892)
-- Choice B: Strong learning effect with declining bubbles (slope = -18.387)
+- Choice A: No significant learning effect (p = 0.47)
+- Choice B: Strong learning effect with declining bubbles (slope = -0.098, R² = 0.934)
 - Professional traders show learning convergence
 
 ### **Research Question Remains Open**
