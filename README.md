@@ -14,25 +14,33 @@ If bubbles reflect confusion, misunderstanding of fundamental values, or lack of
 
 ## Experimental Design
 
-### Experiment A: Learning Through Repetition
+### Choice A: Learning Through Repetition
 - **Subjects**: 72 undergraduate students (6 sessions of 12 subjects)
 - **Structure**: 5 consecutive markets per session
 - **Trading**: 15 periods of continuous double-auction trading per market
 - **Dividend**: Random dividend each period (0, 8, 28, or 60 francs, equally likely)
 - **Initial Endowment**: 600 francs cash + 4 assets per subject
-- **Information Treatment**: 
-  - Sessions 1-3: Fundamental values displayed on screen
-  - Sessions 4-6: Fundamental values hidden (subjects only know dividend rule)
+- **Information Treatment**:
 
-### Experiment B: Professional vs Student Traders
+| Session | Information Display | Description |
+|---------|-------------------|-------------|
+| 1-3 | Fundamental values shown | High information transparency |
+| 4-6 | Fundamental values hidden | Low information transparency |
+
+### Choice B: Professional vs Student Traders
 - **Subjects**: 96 participants (undergraduate students + NYSE professional traders)
 - **Structure**: 8 sessions of 12 subjects each
 - **Trading**: 15 periods of continuous double-auction trading per market
 - **Professional Trader Mix**:
-  - 2 sessions: 3 professionals + 9 students
-  - 2 sessions: 6 professionals + 6 students  
-  - 2 sessions: 9 professionals + 3 students
-  - 2 sessions: 12 professionals only
+
+| Session | Professionals | Students | Professional Share | Description |
+|---------|---------------|----------|-------------------|-------------|
+| 1-2 | 3 | 9 | 25% | Low professional influence |
+| 3-4 | 6 | 6 | 50% | Balanced mix |
+| 5-6 | 9 | 3 | 75% | High professional influence |
+| 7-8 | 12 | 0 | 100% | Professional traders only |
+
+**Note**: Each session has 12 subjects total, with 15 trading periods per session.
 
 ## Data Files
 
