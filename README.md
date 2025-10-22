@@ -50,7 +50,7 @@ Based on behavioral finance literature, this project follows a structured analys
 
 | Layer | N | Behavioral Idea | Hypothesis (H0 vs H1) | Test Type | Data Used | Expected Direction/Evidence |
 |-------|---|-----------------|----------------------|-----------|-----------|---------------------------|
-| **Market** | 0 | **Last Price Comparison** | H0: μ_A = μ_B vs H1: μ_A ≠ μ_B | Two-sample t-test / Mann-Whitney U | LastPrice by experiment | **RESULT: No significant difference (p=0.878)** |
+| **Market** | 0 | Last Price Comparison | H0: μ_A = μ_B vs H1: μ_A ≠ μ_B | Two-sample t-test / Mann-Whitney U | LastPrice by experiment | No significant difference (p=0.878) |
 | | 1 | Market Efficiency | H0: bubble mean = 0 vs H1: bubble mean ≠ 0 | One-sample t-test / Wilcoxon signed-rank | All trades (Price - Fundamental) | If p < 0.05 → Evidence of bubbles (inefficiency) |
 | | 2 | Information Structure (Choice A vs B) | H0: μ_A = μ_B vs H1: μ_A ≠ μ_B | Two-sample t-test / Mann-Whitney U | LastBubble by experiment | Expected μ_B < μ_A → More info = smaller bubbles |
 | | 3 | Learning Across Sessions | H0: bubble means equal across sessions | One-way ANOVA / Kruskal-Wallis | Bubble by Session | Declining trend; later sessions show smaller bubbles |
@@ -79,12 +79,50 @@ Based on behavioral finance literature, this project follows a structured analys
 - **Mean prices**: Choice A = 256.58, Choice B = 257.26
 - **Implication**: Professional traders do not significantly affect overall price levels in laboratory markets
 
+![Last Price Comparison](lastprice_comparison.png)
+
+**Figure 1: Last Price Distribution Comparison**
+- Left: Histogram comparison showing overlapping distributions
+- Right: Box plot comparison with similar medians and ranges
+- Bottom: Cumulative distribution functions nearly identical
+- Statistical summary confirms no significant difference (p = 0.878)
+
+### **Market Efficiency Analysis**
+Both Choice A and Choice B show significant bubbles, indicating market inefficiency:
+
+![Market Efficiency Analysis](market_efficiency_analysis.png)
+
+**Figure 2: Market Efficiency Analysis**
+- Both experiments show significant bubbles (p < 0.001)
+- Average bubble size: Choice A = 64.74, Choice B = 65.26
+- Large effect sizes (Cohen's d > 0.8) indicate substantial market inefficiency
+
+### **Information Structure Analysis**
+Significant difference between experiments in final bubble levels:
+
+![Information Structure Analysis](information_structure_analysis.png)
+
+**Figure 3: Information Structure Analysis**
+- Choice B shows larger final bubbles (p = 0.036)
+- Information transparency effect: showing fundamentals reduces bubbles
+- Professional trader share vs bubble size relationship
+
+### **Learning Effects Analysis**
+Different learning patterns between experiments:
+
+![Learning Analysis](learning_analysis.png)
+
+**Figure 4: Learning Across Sessions**
+- Choice A: No significant learning effect (p = 0.892)
+- Choice B: Strong learning effect with declining bubbles (slope = -18.387)
+- Professional traders show learning convergence
+
 ### **Research Question Remains Open**
-While price levels are similar, the analysis continues to examine:
-- **Bubble dynamics** (price deviations from fundamentals)
-- **Learning effects** across sessions
-- **Professional trader influence** on market behavior
+While price levels are similar, the analysis reveals:
+- **Significant bubble dynamics** in both experiments
+- **Different learning patterns** between Choice A and B
 - **Information structure effects** on market efficiency
+- **Professional trader influence** on learning convergence
 
 
 #Appendix
