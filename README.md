@@ -50,7 +50,7 @@ Based on behavioral finance literature, this project follows a structured analys
 
 | Layer | N | Behavioral Idea | Hypothesis (H0 vs H1) | Test Type | Data Used | Expected Direction/Evidence |
 |-------|---|-----------------|----------------------|-----------|-----------|---------------------------|
-| **Market** | 0 | Last Price Comparison | H0: μ_A = μ_B vs H1: μ_A ≠ μ_B | Two-sample t-test / Mann-Whitney U | LastPrice by experiment | No significant difference (p=0.878) |
+| **Market** | 0 | Last Price Comparison | H0: μ_A = μ_B vs H1: μ_A ≠ μ_B | Two-sample t-test / Mann-Whitney U | LastPrice by experiment | No significant difference (p=0.878) BUT 4x more low prices in Choice B! |
 | | 1 | Market Efficiency | H0: bubble mean = 0 vs H1: bubble mean ≠ 0 | One-sample t-test / Wilcoxon signed-rank | All trades (Price - Fundamental) | If p < 0.05 → Evidence of bubbles (inefficiency) |
 | | 2 | Information Structure (Choice A vs B) | H0: μ_A = μ_B vs H1: μ_A ≠ μ_B | Two-sample t-test / Mann-Whitney U | LastBubble by experiment | Expected μ_B < μ_A → More info = smaller bubbles |
 | | 3 | Learning Across Sessions | H0: bubble means equal across sessions | One-way ANOVA / Kruskal-Wallis | Bubble by Session | Declining trend; later sessions show smaller bubbles |
@@ -68,26 +68,33 @@ Based on behavioral finance literature, this project follows a structured analys
 
 1. **Game Description**: Explain the trading game, standard economic predictions, and early experimental findings
 2. **Experimental Comparison**: Compare the strengths and weaknesses of Experiment A vs Experiment B
-3. **Statistical Analysis**: Conduct appropriate statistical tests following the 12-point framework
+3. **Statistical Analysis**: Conduct appropriate statistical tests following the framework
 4. **Critical Reflection**: Evaluate experimental design effectiveness
 5. **Master's Extension**: Propose new hypothesis, design, and analysis plan
 
 ## Key Findings
 
-### **Primary Result: No Significant Price Difference**
+### 1 Last Prices Comparison: No Significant Price Difference
 - **Choice A (Students only)** vs **Choice B (Professional + Students mix)** show **no significant difference** in LastPrice (p = 0.878)
 - **Mean prices**: Choice A = 256.58, Choice B = 257.26
 - **Implication**: Professional traders do not significantly affect overall price levels in laboratory markets
+- Choice B has 4x more low prices (≤30 Francs) than Choice A
 
 ![Last Price Comparison](lastprice_comparison.png)
 
 **Figure 1: Last Price Distribution Comparison**
-- Left: Histogram comparison showing overlapping distributions
-- Right: Box plot comparison with similar medians and ranges
-- Bottom: Cumulative distribution functions nearly identical
-- Statistical summary confirms no significant difference (p = 0.878)
+- Shows overlapping distributions with no significant difference (p = 0.878)
+- Choice B has 4x more low prices (≤30 Francs) than Choice A
 
-### **Market Efficiency Analysis**
+### 2 Fundamental Values Validation
+Identical fundamental value distributions across experiments:
+
+- **Choice A**: Mean = 192.00, SD = 103.70, Range = 24-360
+- **Choice B**: Mean = 192.00, SD = 103.73, Range = 24-360
+- **Statistical test**: No significant difference (p = 1.000)
+- **Implication**: Any price differences are due to trader behavior, not fundamental differences
+
+### 3 Market Efficiency Analysis
 Both Choice A and Choice B show significant bubbles, indicating market inefficiency:
 
 ![Market Efficiency Analysis](market_efficiency_analysis.png)
@@ -97,7 +104,7 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 - Average bubble size: Choice A = 64.74, Choice B = 65.26
 - Large effect sizes (Cohen's d > 0.8) indicate substantial market inefficiency
 
-### **Information Structure Analysis**
+### 4 Information Structure Analysis
 Significant difference between experiments in final bubble levels:
 
 ![Information Structure Analysis](information_structure_analysis.png)
@@ -107,7 +114,7 @@ Significant difference between experiments in final bubble levels:
 - Information transparency effect: showing fundamentals reduces bubbles
 - Professional trader share vs bubble size relationship
 
-### **Learning Effects Analysis**
+### 5 Learning Effects Analysis
 Different learning patterns between experiments:
 
 ![Learning Analysis](learning_analysis.png)
