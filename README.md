@@ -6,6 +6,7 @@ Empirical analysis of experimental asset bubbles (Choice A vs Choice B) for MGSC
 
 This project analyzes experimental data from two distinct bubble market experiments designed to test the hypothesis that **bubbles are a result of inexperience**. The research investigates whether experienced traders anchor prices closer to fundamentals, leading to diminished or eliminated bubbles.
 
+
 ## Research Question
 
 **Are bubbles a result of inexperience?** 
@@ -18,7 +19,7 @@ If bubbles reflect confusion, misunderstanding of fundamental values, or lack of
 - **Subjects**: 72 undergraduate students (6 sessions of 12 subjects)
 - **Structure**: 5 consecutive markets per session
 - **Trading**: 15 periods of continuous double-auction trading per market
-- **Dividend**: Random dividend each period (0, 8, 28, or 60 francs, equally likely)
+- **Dividend**: Random dividend each period (0, 8, 28, or 60 francs, equally likely 25%)
 - **Initial Endowment**: 600 francs cash + 4 assets per subject
 - **Information Treatment**:
 
@@ -42,11 +43,6 @@ If bubbles reflect confusion, misunderstanding of fundamental values, or lack of
 
 **Note**: Each session has 12 subjects total, with 15 trading periods per session.
 
-## Data Files
-
-- `Bubble_Markets_2025.csv` - Main dataset in CSV format
-- `Bubble_Markets_2025.xlsx` - Main dataset in Excel format
-- `Assignment Bubbles in Financial Markets.txt` - Assignment description
 
 ## Analysis Framework
 
@@ -54,7 +50,8 @@ Based on behavioral finance literature, this project follows a structured analys
 
 | Layer | N | Behavioral Idea | Hypothesis (H0 vs H1) | Test Type | Data Used | Expected Direction/Evidence |
 |-------|---|-----------------|----------------------|-----------|-----------|---------------------------|
-| **Market** | 1 | Market Efficiency | H0: bubble mean = 0 vs H1: bubble mean ≠ 0 | One-sample t-test / Wilcoxon signed-rank | All trades (Price - Fundamental) | If p < 0.05 → Evidence of bubbles (inefficiency) |
+| **Market** | 0 | **Last Price Comparison** | H0: μ_A = μ_B vs H1: μ_A ≠ μ_B | Two-sample t-test / Mann-Whitney U | LastPrice by experiment | **RESULT: No significant difference (p=0.878)** |
+| | 1 | Market Efficiency | H0: bubble mean = 0 vs H1: bubble mean ≠ 0 | One-sample t-test / Wilcoxon signed-rank | All trades (Price - Fundamental) | If p < 0.05 → Evidence of bubbles (inefficiency) |
 | | 2 | Information Structure (Choice A vs B) | H0: μ_A = μ_B vs H1: μ_A ≠ μ_B | Two-sample t-test / Mann-Whitney U | LastBubble by experiment | Expected μ_B < μ_A → More info = smaller bubbles |
 | | 3 | Learning Across Sessions | H0: bubble means equal across sessions | One-way ANOVA / Kruskal-Wallis | Bubble by Session | Declining trend; later sessions show smaller bubbles |
 | **Individual** | 4 | Trader Type Effect | H0: μ_pro = μ_student vs H1: μ_pro ≠ μ_student | Two-sample t-test / Mann-Whitney U | Final Payoff by TraderType | Expected μ_pro > μ_student → Higher average returns |
@@ -74,6 +71,30 @@ Based on behavioral finance literature, this project follows a structured analys
 3. **Statistical Analysis**: Conduct appropriate statistical tests following the 12-point framework
 4. **Critical Reflection**: Evaluate experimental design effectiveness
 5. **Master's Extension**: Propose new hypothesis, design, and analysis plan
+
+## Key Findings
+
+### **Primary Result: No Significant Price Difference**
+- **Choice A (Students only)** vs **Choice B (Professional + Students mix)** show **no significant difference** in LastPrice (p = 0.878)
+- **Mean prices**: Choice A = 256.58, Choice B = 257.26
+- **Implication**: Professional traders do not significantly affect overall price levels in laboratory markets
+
+### **Research Question Remains Open**
+While price levels are similar, the analysis continues to examine:
+- **Bubble dynamics** (price deviations from fundamentals)
+- **Learning effects** across sessions
+- **Professional trader influence** on market behavior
+- **Information structure effects** on market efficiency
+
+
+#Appendix
+
+## Data Files
+
+- `Bubble_Markets_2025.csv` - Main dataset in CSV format
+- `Bubble_Markets_2025.xlsx` - Main dataset in Excel format
+- `Assignment Bubbles in Financial Markets.txt` - Assignment description
+
 
 ## Deliverables
 
