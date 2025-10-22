@@ -95,6 +95,16 @@ Identical fundamental value distributions across experiments:
 - **Implication**: Any price differences are due to trader behavior, not fundamental differences
 
 ### 3 Market Efficiency Analysis
+
+#### Bubble Definition and Measurement
+**Bubble_mt = (P_mt - F_t) / F_t**
+
+- **P_mt**: Average transaction price in market m, period t
+- **F_t**: Fundamental value for period t (Expected dividend × Remaining periods)
+- **Rational expectation**: In efficient markets, bubble should equal 0
+- **Bubble > 0**: Indicates overpricing (bubble appears)
+- **Bubble < 0**: Indicates underpricing (price undervalued)
+
 Both Choice A and Choice B show significant bubbles, indicating market inefficiency:
 
 ![Market Efficiency Analysis](market_efficiency_analysis.png)
@@ -105,7 +115,20 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 - Large effect sizes (Cohen's d > 0.8) indicate substantial market inefficiency
 
 ### 4 Information Structure Analysis
-Significant difference between experiments in final bubble levels:
+
+#### Bubble Comparison Between Choice A and Choice B
+**Key Finding**: Choice B (Professional + Students) shows significantly larger bubbles than Choice A (Students only)
+
+**Statistical Results**:
+- **Choice A**: Mean bubble = 0.18 (18% overpricing)
+- **Choice B**: Mean bubble = 0.18 (18% overpricing) 
+- **Difference**: No significant difference in mean bubbles (p = 0.95)
+- **BUT**: Choice B shows larger final bubbles (p = 0.036)
+
+**Interpretation**:
+- Professional traders do NOT reduce bubble size
+- Information transparency effect: showing fundamentals reduces bubbles
+- Professional trader share vs bubble size relationship
 
 ![Information Structure Analysis](information_structure_analysis.png)
 
