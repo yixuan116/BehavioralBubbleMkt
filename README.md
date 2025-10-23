@@ -170,12 +170,79 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 - Choice B: Strong learning effect with declining bubbles (slope = -0.098, R² = 0.934)
 - Professional traders show learning convergence
 
-### **Research Question Remains Open**
-While price levels are similar, the analysis reveals:
-- **Significant bubble dynamics** in both experiments
-- **Different learning patterns** between Choice A and B
-- **Information structure effects** on market efficiency
-- **Professional trader influence** on learning convergence
+### 6 Individual Layer Analysis Results
+
+#### Trader Type Effect (N=4)
+- **Professional traders significantly outperform** students (p = 0.031)
+- **Mean payoffs**: Professional = 3,474.57, Student = 2,960.89
+- **Effect size**: Cohen's d = 0.463 (small to medium)
+- **Implication**: Professional experience translates to higher returns
+
+#### Dividend Regime Effect (N=5)
+- **High dividend periods show significantly higher payoffs** (p = 0.002)
+- **Mean payoffs**: High dividend = 124.52, Low dividend = 79.95
+- **Effect size**: η² = 0.002 (negligible but significant)
+- **Implication**: Structural luck component affects period-level performance
+
+#### Skill vs Luck (N=6)
+- **No significant skill heterogeneity** between trader types (p = 0.933)
+- **Variance ratio**: Professional/Student = 1.022
+- **Implication**: Performance variance is similar across trader types
+
+### 7 Outcomes Layer Analysis Results
+
+#### Bubble-Profit Link (N=7)
+- **Strong positive correlation** between bubble size and payoffs (r = 0.928, p < 0.001)
+- **Contrary to expectation**: Larger bubbles associated with higher payoffs
+- **Implication**: Bubble formation may be profitable for participants
+
+#### Outcome Inequality (N=8)
+- **No significant inequality difference** between experiments (p = 0.098)
+- **Variance ratio**: Choice A/Choice B = 1.704
+- **Implication**: Information structure does not affect payoff inequality
+
+### 8 Behaviors Layer Analysis Results
+
+#### Aggregate Dynamics (N=9)
+- **Significant negative trend** in bubble formation (slope = -0.019, p = 0.002)
+- **Learning effect**: Bubbles decrease over time across all sessions
+- **R² = 0.078**: Moderate trend strength
+
+#### Behavioral Anchoring (N=10)
+- **Strong price anchoring bias** detected (β_trade/β_fundamental = 16.2)
+- **94.2% of price formation** comes from previous prices
+- **5.8% of price formation** comes from fundamentals
+- **Implication**: Prices anchor heavily to historical values rather than fundamentals
+
+#### Coordination Failure (N=11)
+- **Significant coordination failure** detected (p < 0.001)
+- **Bubble variance significantly > 0**: Markets fail to coordinate on fundamentals
+- **Price dispersion**: Significant across all sessions
+
+#### Aggregate Payoff Efficiency (N=12)
+- **Significant under-efficiency** detected (ratio = 0.053, p < 0.001)
+- **Actual payoffs 94.7% lower** than expected fundamental values
+- **Systematic deviation**: Consistent under-performance across sessions
+
+### **Research Question Conclusion**
+
+**The research question "Are bubbles a result of inexperience?" receives mixed support:**
+
+#### Supporting Evidence:
+1. **Professional traders outperform** students in final payoffs
+2. **Strong learning effects** in Choice B with professional traders
+3. **No learning** in Choice A with students only
+
+#### Contradictory Evidence:
+1. **Professional traders create larger bubbles** (31.8% vs 28.1%)
+2. **Price anchoring bias** affects all traders regardless of experience
+3. **Coordination failure** persists across all market conditions
+
+#### Key Insights:
+- **Experience improves individual performance** but not market efficiency
+- **Learning occurs through professional trader influence** rather than individual repetition
+- **Behavioral biases** (anchoring, coordination failure) are fundamental market features
+- **Bubble formation** is a complex phenomenon involving multiple behavioral factors
 
 
 #Appendix
@@ -199,24 +266,38 @@ While price levels are similar, the analysis reveals:
 ```
 BehavioralBubbleMkt/
 ├── README.md
-├── Assignment Bubbles in Financial Markets.txt
+├── README_complete.md
 ├── Bubble_Markets_2025.xlsx
 ├── Experiment_A_Trading_Data.csv
 ├── Experiment_B_Trading_Data.csv
 ├── Analysis Scripts/
-│   ├── individual_price_distributions.py
-│   ├── seaborn_price_analysis.py
-│   ├── price_analysis.py
-│   ├── professional_vs_student_analysis.py
-│   └── run_analysis.py
-├── Generated Charts/
-│   ├── experiment_a_price_distribution.png
-│   ├── experiment_b_price_distribution.png
-│   ├── experiments_comparison.png
-│   ├── experiment_a_seaborn_style.png
-│   ├── experiment_b_seaborn_style.png
-│   ├── experiments_seaborn_comparison.png
-│   └── professional_vs_student_seaborn.png
+│   ├── lastprice_comparison_analysis.py
+│   ├── market_efficiency_analysis.py
+│   ├── information_structure_analysis.py
+│   ├── learning_analysis.py
+│   ├── trader_type_analysis.py
+│   ├── dividend_regime_analysis_corrected.py
+│   ├── skill_vs_luck_analysis.py
+│   ├── bubble_profit_link_analysis.py
+│   ├── outcome_inequality_analysis.py
+│   ├── aggregate_dynamics_analysis.py
+│   ├── behavioral_anchoring_analysis.py
+│   ├── coordination_failure_analysis.py
+│   └── aggregate_payoff_efficiency_analysis.py
+├── Generated Visualizations/
+│   ├── lastprice_comparison.png
+│   ├── market_efficiency_analysis.png
+│   ├── information_structure_analysis.png
+│   ├── learning_analysis.png
+│   ├── trader_type_analysis.png
+│   ├── dividend_regime_analysis_corrected.png
+│   ├── skill_vs_luck_analysis.png
+│   ├── bubble_profit_link_analysis.png
+│   ├── outcome_inequality_analysis.png
+│   ├── aggregate_dynamics_analysis.png
+│   ├── behavioral_anchoring_analysis.png
+│   ├── coordination_failure_analysis.png
+│   └── aggregate_payoff_efficiency_analysis.png
 └── LICENSE
 ```
 
