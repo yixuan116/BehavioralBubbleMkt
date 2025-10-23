@@ -299,7 +299,7 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 - **Bubble formation** is a complex phenomenon involving multiple behavioral factors
 
 
-#Appendix
+# Appendix
 
 ## Data Files
 
