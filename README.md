@@ -178,16 +178,34 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 - **Effect size**: Cohen's d = 0.463 (small to medium)
 - **Implication**: Professional experience translates to higher returns
 
+![Trader Type Analysis](trader_type_analysis.png)
+
+**Figure 5: Trader Type Effect Analysis**
+- Professional traders show significantly higher final payoffs
+- Effect size indicates small to medium practical significance
+
 #### Dividend Regime Effect (N=5)
 - **High dividend periods show significantly higher payoffs** (p = 0.002)
 - **Mean payoffs**: High dividend = 124.52, Low dividend = 79.95
 - **Effect size**: η² = 0.002 (negligible but significant)
 - **Implication**: Structural luck component affects period-level performance
 
+![Dividend Regime Analysis](dividend_regime_analysis_corrected.png)
+
+**Figure 6: Dividend Regime Analysis**
+- High dividend periods show significantly higher period payoffs
+- Structural luck component affects performance
+
 #### Skill vs Luck (N=6)
 - **No significant skill heterogeneity** between trader types (p = 0.933)
 - **Variance ratio**: Professional/Student = 1.022
 - **Implication**: Performance variance is similar across trader types
+
+![Skill vs Luck Analysis](skill_vs_luck_analysis.png)
+
+**Figure 7: Skill vs Luck Analysis**
+- No significant difference in performance variance between trader types
+- Similar skill heterogeneity across professional and student traders
 
 ### 7 Outcomes Layer Analysis Results
 
@@ -196,10 +214,22 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 - **Contrary to expectation**: Larger bubbles associated with higher payoffs
 - **Implication**: Bubble formation may be profitable for participants
 
+![Bubble-Profit Link Analysis](bubble_profit_link_analysis.png)
+
+**Figure 8: Bubble-Profit Link Analysis**
+- Strong positive correlation between bubble size and session payoffs
+- Contrary to expected negative relationship
+
 #### Outcome Inequality (N=8)
 - **No significant inequality difference** between experiments (p = 0.098)
 - **Variance ratio**: Choice A/Choice B = 1.704
 - **Implication**: Information structure does not affect payoff inequality
+
+![Outcome Inequality Analysis](outcome_inequality_analysis.png)
+
+**Figure 9: Outcome Inequality Analysis**
+- No significant difference in payoff variance between experiments
+- Information structure does not affect inequality
 
 ### 8 Behaviors Layer Analysis Results
 
@@ -208,21 +238,45 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 - **Learning effect**: Bubbles decrease over time across all sessions
 - **R² = 0.078**: Moderate trend strength
 
+![Aggregate Dynamics Analysis](aggregate_dynamics_analysis.png)
+
+**Figure 10: Aggregate Dynamics Analysis**
+- Significant negative trend in bubble formation over time
+- Learning effect across all sessions
+
 #### Behavioral Anchoring (N=10)
 - **Strong price anchoring bias** detected (β_trade/β_fundamental = 16.2)
 - **94.2% of price formation** comes from previous prices
 - **5.8% of price formation** comes from fundamentals
 - **Implication**: Prices anchor heavily to historical values rather than fundamentals
 
+![Behavioral Anchoring Analysis](behavioral_anchoring_analysis.png)
+
+**Figure 11: Behavioral Anchoring Analysis**
+- Strong price anchoring bias (16.2x more weight on previous prices)
+- Prices anchor heavily to historical values rather than fundamentals
+
 #### Coordination Failure (N=11)
 - **Significant coordination failure** detected (p < 0.001)
 - **Bubble variance significantly > 0**: Markets fail to coordinate on fundamentals
 - **Price dispersion**: Significant across all sessions
 
+![Coordination Failure Analysis](coordination_failure_analysis.png)
+
+**Figure 12: Coordination Failure Analysis**
+- Significant coordination failure across all market conditions
+- Markets fail to coordinate on fundamental values
+
 #### Aggregate Payoff Efficiency (N=12)
 - **Significant under-efficiency** detected (ratio = 0.053, p < 0.001)
 - **Actual payoffs 94.7% lower** than expected fundamental values
 - **Systematic deviation**: Consistent under-performance across sessions
+
+![Aggregate Payoff Efficiency Analysis](aggregate_payoff_efficiency_analysis.png)
+
+**Figure 13: Aggregate Payoff Efficiency Analysis**
+- Significant under-efficiency in payoff allocation
+- Actual payoffs 94.7% lower than expected fundamental values
 
 ### **Research Question Conclusion**
 
