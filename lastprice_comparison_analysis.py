@@ -179,6 +179,143 @@ in prices between Choice A and B
     
     print("LastPrice comparison saved as 'lastprice_comparison.png'")
 
+def create_fundamental_bubble_combo_chart():
+    """Create combo chart with Fundamental Value (bar) + Bubble % (line)"""
+    print("\nCreating Fundamental Value Bar Chart + Bubble % Line Chart...")
+    
+    df_a, df_b = load_data()
+    
+    # Combine data
+    df_a['Experiment'] = 'Choice A'
+    df_b['Experiment'] = 'Choice B'
+    df = pd.concat([df_a, df_b], ignore_index=True)
+    
+    # Calculate period-level metrics
+    period_metrics = []
+    
+    for experiment in ['Choice A', 'Choice B']:
+        exp_data = df[df['Experiment'] == experiment]
+        
+        for period in sorted(exp_data['Period'].unique()):
+            period_data = exp_data[exp_data['Period'] == period]
+            
+            # Calculate metrics
+            avg_price = period_data['LastPrice'].mean()
+            fundamental = period_data['Fundamental'].iloc[0]
+            bubble_pct = ((avg_price - fundamental) / fundamental) * 100 if fundamental > 0 else 0
+            
+            period_metrics.append({
+                'Experiment': experiment,
+                'Period': period,
+                'AvgPrice': avg_price,
+                'Fundamental': fundamental,
+                'BubblePct': bubble_pct
+            })
+    
+    metrics_df = pd.DataFrame(period_metrics)
+    
+    # Create the chart
+    fig, ax1 = plt.subplots(figsize=(16, 10))
+    
+    # Prepare data
+    periods = sorted(metrics_df['Period'].unique())
+    choice_a = metrics_df[metrics_df['Experiment'] == 'Choice A'].sort_values('Period')
+    choice_b = metrics_df[metrics_df['Experiment'] == 'Choice B'].sort_values('Period')
+    
+    # Extract data
+    fundamental_values = choice_a['Fundamental'].values
+    bubble_pct_a = choice_a['BubblePct'].values
+    bubble_pct_b = choice_b['BubblePct'].values
+    
+    # Create bar chart for Fundamental Value (left y-axis)
+    bars = ax1.bar(range(len(periods)), fundamental_values, 
+                   color='darkgreen', alpha=0.7, width=0.6, 
+                   label='Fundamental Value')
+    
+    # Set up left y-axis
+    ax1.set_xlabel('Period', fontsize=14, fontweight='bold')
+    ax1.set_ylabel('Fundamental Value', fontsize=14, color='darkgreen', fontweight='bold')
+    ax1.tick_params(axis='y', labelcolor='darkgreen', labelsize=12)
+    ax1.set_ylim(0, max(fundamental_values) * 1.1)
+    
+    # Create second y-axis for Bubble %
+    ax2 = ax1.twinx()
+    
+    # Create line chart for Choice A Bubble %
+    line1 = ax2.plot(range(len(periods)), bubble_pct_a, 
+                     color='red', marker='o', linewidth=3, 
+                     markersize=8, label='Choice A Bubble %')
+    
+    # Create line chart for Choice B Bubble %
+    line2 = ax2.plot(range(len(periods)), bubble_pct_b, 
+                     color='blue', marker='s', linewidth=3, 
+                     markersize=8, label='Choice B Bubble %')
+    
+    # Set up right y-axis
+    ax2.set_ylabel('Bubble %', fontsize=14, color='blue', fontweight='bold')
+    ax2.tick_params(axis='y', labelcolor='blue', labelsize=12)
+    
+    # Set y-axis limits for bubble %
+    bubble_min = min(min(bubble_pct_a), min(bubble_pct_b))
+    bubble_max = max(max(bubble_pct_a), max(bubble_pct_b))
+    ax2.set_ylim(bubble_min - 10, bubble_max + 10)
+    
+    # Set x-axis labels
+    ax1.set_xticks(range(len(periods)))
+    ax1.set_xticklabels([f'Period {p}' for p in periods], fontsize=12)
+    
+    # Add data labels on bars (above bars)
+    for i, bar in enumerate(bars):
+        height = bar.get_height()
+        ax1.text(bar.get_x() + bar.get_width()/2., height + max(fundamental_values) * 0.02,
+                f'{height:.0f}', ha='center', va='bottom', fontsize=9, fontweight='bold',
+                bbox=dict(boxstyle='round,pad=0.2', facecolor='white', alpha=0.8))
+    
+    # Add data labels on Choice A line (alternating positions)
+    for i, (x, y) in enumerate(zip(range(len(periods)), bubble_pct_a)):
+        if i % 2 == 0:  # Even periods: above
+            ax2.text(x, y + max(bubble_pct_a) * 0.08, f'{y:.1f}%', 
+                    ha='center', va='bottom', fontsize=8, color='red', fontweight='bold',
+                    bbox=dict(boxstyle='round,pad=0.2', facecolor='white', alpha=0.8))
+        else:  # Odd periods: below
+            ax2.text(x, y - max(bubble_pct_a) * 0.08, f'{y:.1f}%', 
+                    ha='center', va='top', fontsize=8, color='red', fontweight='bold',
+                    bbox=dict(boxstyle='round,pad=0.2', facecolor='white', alpha=0.8))
+    
+    # Add data labels on Choice B line (opposite alternating)
+    for i, (x, y) in enumerate(zip(range(len(periods)), bubble_pct_b)):
+        if i % 2 == 0:  # Even periods: below
+            ax2.text(x, y - max(bubble_pct_b) * 0.08, f'{y:.1f}%', 
+                    ha='center', va='top', fontsize=8, color='blue', fontweight='bold',
+                    bbox=dict(boxstyle='round,pad=0.2', facecolor='white', alpha=0.8))
+        else:  # Odd periods: above
+            ax2.text(x, y + max(bubble_pct_b) * 0.08, f'{y:.1f}%', 
+                    ha='center', va='bottom', fontsize=8, color='blue', fontweight='bold',
+                    bbox=dict(boxstyle='round,pad=0.2', facecolor='white', alpha=0.8))
+    
+    # Add title
+    plt.title('Fundamental Value (Bar Chart) + Choice A & B Bubble % (Line Chart)', 
+              fontsize=16, fontweight='bold', pad=30)
+    
+    # Add legends
+    lines1, labels1 = ax1.get_legend_handles_labels()
+    lines2, labels2 = ax2.get_legend_handles_labels()
+    ax1.legend(lines1 + lines2, labels1 + labels2, loc='upper right', fontsize=12)
+    
+    # Add grid
+    ax1.grid(True, alpha=0.3)
+    
+    # Adjust layout
+    plt.tight_layout()
+    
+    # Save the chart
+    plt.savefig('fundamental_value_bubble_percentage_chart.png', dpi=300, bbox_inches='tight')
+    plt.show()
+    
+    print("✓ Combo chart saved as 'fundamental_value_bubble_percentage_chart.png'")
+    
+    return metrics_df
+
 def main():
     """Main function"""
     print("="*80)
@@ -190,6 +327,9 @@ def main():
     
     # Create visualizations
     create_lastprice_visualizations(price_a, price_b)
+    
+    # Create combo chart
+    create_fundamental_bubble_combo_chart()
     
     print("\n" + "="*80)
     print("LAST PRICE COMPARISON ANALYSIS COMPLETE!")

@@ -44,6 +44,58 @@ If bubbles reflect confusion, misunderstanding of fundamental values, or lack of
 **Note**: Each session has 12 subjects total, with 15 trading periods per session.
 
 
+## Bubble Analysis Summary
+
+### **Bubble Formation and Convergence Analysis**
+
+This analysis examines bubble formation patterns in two experimental conditions (Choice A vs Choice B) using LastPrice relative to Fundamental Value as the primary metric. The Fundamental Value serves as a **control variable** that consistently decreases from 360 to 24 across 15 periods, providing a stable benchmark for measuring market efficiency.
+
+### **Key Findings:**
+
+**1. Overall Bubble Levels:**
+- **Choice A**: Mean bubble of 28.13% (Median: 21.76%)
+- **Choice B**: Mean bubble of 31.81% (Median: 20.14%)
+- **Statistical difference**: Not significant (p=0.428, Cohen's d=-0.082)
+
+**2. Convergence Patterns:**
+Both experiments show **convergence trends** toward the fundamental value:
+- **Early periods (1-10)**: Bubble formation and growth phase
+- **Late periods (11-15)**: Sharp decline and convergence phase
+- **Choice A**: Converges below fundamental (negative bubble in final periods)
+- **Choice B**: Converges near fundamental (close to 0% in final periods)
+
+**3. Market Efficiency:**
+- **Choice A**: 82.6% of periods above fundamental
+- **Choice B**: 87.5% of periods above fundamental
+- Both show learning effects as periods progress
+
+### **Statistical Tests:**
+- **T-test**: t=-0.793, p=0.428 (Not significant)
+- **Mann-Whitney U**: U=26202, p=0.645 (Not significant)
+- **Effect size**: Small (Cohen's d=-0.082)
+
+**4. Volatility and Risk:**
+- **Choice A**: Higher volatility (46.27% std dev) with extreme values (-95.83% to 197.52%)
+- **Choice B**: Lower volatility (40.48% std dev) with more moderate range (-58.15% to 178.58%)
+- Choice A shows more extreme bubble behavior
+
+**5. Data Quality:**
+- **Choice A**: 12 records with NaN LastPrice removed (0.22% of data)
+- **Choice B**: No missing data
+- Data cleaning had minimal impact on results
+
+### **Conclusion**
+
+The analysis reveals that while both experimental conditions generate bubbles, **Choice A and Choice B show statistically similar bubble levels**. The **convergence trend** toward the fundamental value (control variable) demonstrates learning effects in both conditions, with Choice A showing overshooting (undervaluation) and Choice B showing more precise convergence to fundamental value.
+
+**Key insights:**
+- **Fundamental Value** serves as an effective control variable
+- **Convergence patterns** differ between experiments
+- **Choice A** exhibits higher volatility and extreme behavior
+- **Statistical significance** is not achieved for overall differences
+
+---
+
 ## Analysis Framework
 
 Based on behavioral finance literature, this project follows a structured analysis framework across four analytical layers:
