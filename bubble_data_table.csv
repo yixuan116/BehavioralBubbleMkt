@@ -1,0 +1,7 @@
+Title,Choice,Period 1,Period 2,Period 3,Period 4,Period 5,Period 6,Period 7,Period 8,Period 9,Period 10,Period 11,Period 12,Period 13,Period 14,Period 15
+Choice A Lastprice-fundamental = Bubble,Choice A,24.5,49.3,67.1,111.5,147.4,143.3,108.0,79.5,93.1,84.0,55.6,36.5,-10.9,-6.9,-8.3
+Choice A Fundamental,Choice A,360.0,336.0,312.0,288.0,264.0,240.0,216.0,192.0,168.0,144.0,120.0,96.0,72.0,48.0,24.0
+Choice A (Lastprice-fundamental)/fundamental = bubble %,Choice A,7%,15%,22%,39%,56%,60%,50%,41%,55%,58%,46%,38%,-15%,-14%,-35%
+Choice B Lastprice-fundamental = Bubble,Choice B,24.9,50.2,67.8,100.9,161.2,129.3,108.1,75.1,89.4,87.8,46.2,35.6,2.2,-0.2,0.5
+Choice B Fundamental,Choice B,360.0,336.0,312.0,288.0,264.0,240.0,216.0,192.0,168.0,144.0,120.0,96.0,72.0,48.0,24.0
+Choice B (Lastprice-fundamental)/fundamental = bubble %,Choice B,7%,15%,22%,35%,61%,54%,50%,39%,53%,61%,38%,37%,3%,-0%,2%

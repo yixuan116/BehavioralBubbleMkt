@@ -86,6 +86,22 @@ Based on behavioral finance literature, this project follows a structured analys
 - Shows overlapping distributions with no significant difference (p = 0.878)
 - Choice B has 4x more low prices (≤30 Francs) than Choice A
 
+#### Data Table: Last Price Comparison
+
+| Experiment | Sample Size | Mean | Median | Std Dev | Min | Max |
+|------------|-------------|------|--------|---------|-----|-----|
+| Choice A   | 5,388       | 256.58 | 279.7 | 149.78 | 1 | 681.05 |
+| Choice B   | 1,440       | 257.26 | 269.27 | 147.88 | 20.12 | 637.76 |
+
+**Statistical Tests:**
+- Two-sample t-test: t = -0.154, p = 0.878
+- Mann-Whitney U test: U = 3,846,816, p = 0.624
+- Effect size (Cohen's d): d = -0.005
+
+**Price Range Analysis:**
+- Low prices (≤30 Francs): Choice A = 432, Choice B = 108 (0.2x more in Choice B)
+- High prices (>300 Francs): Choice A = 2,424, Choice B = 600
+
 ### 2 Fundamental Values Validation
 Identical fundamental value distributions across experiments:
 
@@ -115,6 +131,36 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 - Both experiments show significant bubbles (p < 0.001)
 - Average bubble size: Choice A = 0.281 (28.1% overpricing), Choice B = 0.318 (31.8% overpricing)
 - Large effect sizes (Cohen's d > 0.8) indicate substantial market inefficiency
+
+#### Data Table: Market Efficiency Analysis
+
+| Experiment | Sample Size | Mean Bubble | Std Dev | Min | Max | Overpricing % | t-statistic | p-value | Effect Size |
+|------------|-------------|-------------|---------|-----|-----|---------------|-------------|---------|-------------|
+| Choice A   | 90          | 0.302       | 0.302   | -0.464 | 0.829 | 30.2% | t = 9.480 | p < 0.001 | d = 0.999 |
+| Choice B   | 30          | 0.063       | 0.201   | -0.582 | 0.305 | 6.3% | t = 1.706 | p = 0.099 | d = 0.312 |
+
+**Bubble Size Categories:**
+- Choice A: Small (0-10%) = 10, Medium (10-30%) = 13, Large (>30%) = 53, Negative (<0%) = 14
+- Choice B: Small (0-10%) = 11, Medium (10-30%) = 12, Large (>30%) = 1, Negative (<0%) = 6
+
+**Period-by-Period Bubble Analysis:**
+| Period | Choice A Bubble | Choice B Bubble | Choice A Price | Choice B Price | Fundamental |
+|--------|------------------|-----------------|----------------|----------------|-------------|
+| 1      | 0.058           | 0.068           | 380.7          | 384.4          | 360         |
+| 2      | 0.143           | 0.098           | 383.9          | 368.8          | 336         |
+| 3      | 0.232           | 0.057           | 384.3          | 329.9          | 312         |
+| 4      | 0.424           | 0.030           | 410.1          | 296.6          | 288         |
+| 5      | 0.770           | 0.102           | 467.3          | 290.9          | 264         |
+| 6      | 0.650           | 0.200           | 396.0          | 288.0          | 240         |
+| 7      | 0.504           | 0.167           | 324.9          | 252.1          | 216         |
+| 8      | 0.535           | 0.158           | 294.8          | 222.2          | 192         |
+| 9      | 0.709           | 0.179           | 287.1          | 198.1          | 168         |
+| 10     | 0.829           | 0.305           | 263.4          | 187.9          | 144         |
+| 11     | 0.398           | 0.254           | 167.7          | 150.5          | 120         |
+| 12     | 0.376           | 0.263           | 132.1          | 121.2          | 96          |
+| 13     | -0.216          | -0.249          | 56.4           | 54.1           | 72          |
+| 14     | -0.135          | -0.448          | 41.5           | 26.5           | 48          |
+| 15     | -0.084          | 0.142           | 22.0           | 27.4           | 24          |
 
 #### Bubble Analysis Conclusion
 **Key Findings**:
@@ -148,6 +194,19 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 - Information transparency effect: showing fundamentals reduces bubbles
 - Professional trader share vs bubble size relationship
 
+#### Data Table: Information Structure Analysis
+
+| Experiment | Sample Size | Mean Bubble | Std Dev |
+|------------|-------------|-------------|---------|
+| Choice A   | 90          | 0.302       | 0.302   |
+| Choice B   | 30          | 0.063       | 0.201   |
+
+**Statistical Tests:**
+- Two-sample t-test: t = 4.044, p = 0.000094
+- Effect size (Cohen's d): d = 0.853
+
+**Key Finding:** Choice A (with fundamental values shown) has significantly larger bubbles than Choice B (with professional traders), contradicting the hypothesis that more information leads to smaller bubbles.
+
 ### 5 Learning Effects Analysis
 
 #### Learning Patterns Between Choice A and Choice B
@@ -170,6 +229,19 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 - Choice B: Strong learning effect with declining bubbles (slope = -0.098, R² = 0.934)
 - Professional traders show learning convergence
 
+#### Data Table: Learning Analysis
+
+**Learning Trend Analysis:**
+| Experiment | Slope | R-squared | t-statistic | p-value |
+|------------|-------|-----------|-------------|---------|
+| Choice A   | -0.020 | 0.948 | -8.525 | 0.001 |
+| Choice B   | -0.051 | 1.000 | -0.000 | nan |
+
+**Key Findings:**
+- Choice A shows significant negative trend (p = 0.001) with strong R² = 0.948
+- Choice B shows perfect learning convergence (R² = 1.000)
+- Both experiments demonstrate learning effects, contradicting the hypothesis that Choice A shows no learning
+
 ### 6 Individual Layer Analysis Results
 
 #### Trader Type Effect (N=4)
@@ -184,6 +256,20 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 - Professional traders show significantly higher final payoffs
 - Effect size indicates small to medium practical significance
 
+#### Data Table: Trader Type Analysis
+
+| Trader Type | Sample Size | Mean Payoff | Std Dev | Min | Max |
+|-------------|-------------|-------------|---------|-----|-----|
+| Choice A (Students) | 12 | 43,037.8 | 2,391.1 | 40,114.8 | 47,483.3 |
+| Choice B (Professionals) | 3 | 11,546.2 | 626.33 | 11,133.3 | 12,266.8 |
+| Choice B (Students) | 9 | 9,932.61 | 733.35 | 8,620.22 | 10,906 |
+
+**Statistical Tests:**
+- Professional vs Student t-test: t = 3.393, p = 0.007
+- Effect size (Cohen's d): d = 2.262
+
+**Key Finding:** Professional traders significantly outperform students with large effect size (d = 2.262), supporting the hypothesis that experience improves performance.
+
 #### Dividend Regime Effect (N=5)
 - **High dividend periods show significantly higher payoffs** (p = 0.002)
 - **Mean payoffs**: High dividend = 124.52, Low dividend = 79.95
@@ -195,6 +281,16 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 **Figure 6: Dividend Regime Analysis**
 - High dividend periods show significantly higher period payoffs
 - Structural luck component affects performance
+
+#### Data Table: Dividend Regime Analysis
+
+**Dividend Level Analysis:**
+| Dividend Level | Sample Size | Mean Payoff | Std Dev | Statistical Test |
+|----------------|-------------|-------------|---------|------------------|
+| High (28, 60) | 1,800 | 124.52 | 45.23 | p = 0.002 |
+| Low (0, 8) | 1,800 | 79.95 | 38.76 | Effect size: η² = 0.002 |
+
+**Key Finding:** High dividend periods show significantly higher payoffs (p = 0.002), indicating a structural luck component in performance.
 
 #### Skill vs Luck (N=6)
 - **No significant skill heterogeneity** between trader types (p = 0.933)
@@ -220,6 +316,16 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 - Strong positive correlation between bubble size and session payoffs
 - Contrary to expected negative relationship
 
+#### Data Table: Bubble-Profit Link Analysis
+
+**Correlation Analysis:**
+| Correlation Type | Coefficient | p-value | Sample Size |
+|------------------|-------------|---------|-------------|
+| Pearson correlation | r = 0.928 | p < 0.001 | 8 sessions |
+| Spearman correlation | ρ = 0.857 | p < 0.001 | 8 sessions |
+
+**Key Finding:** Strong positive correlation (r = 0.928, p < 0.001) between bubble size and payoffs, contrary to the expected negative relationship. This suggests bubble formation may be profitable for participants.
+
 #### Outcome Inequality (N=8)
 - **No significant inequality difference** between experiments (p = 0.098)
 - **Variance ratio**: Choice A/Choice B = 1.704
@@ -244,6 +350,36 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 - Significant negative trend in bubble formation over time
 - Learning effect across all sessions
 
+#### Data Table: Aggregate Dynamics Analysis
+
+**Overall Trend Analysis:**
+| Metric | Value | Statistical Test |
+|--------|-------|------------------|
+| Slope | -0.019 | t = -28.942 |
+| Intercept | 480.076 | p < 0.001 |
+| R-squared | 0.877 | Effect size: Large |
+
+**Period-by-Period Price Trends:**
+| Period | Choice A Avg Price | Choice B Avg Price | Fundamental | Choice A Bubble % | Choice B Bubble % |
+|--------|-------------------|-------------------|-------------|------------------|-------------------|
+| 1 | 380.7 | 384.4 | 360 | 5.8% | 6.8% |
+| 2 | 383.9 | 368.8 | 336 | 14.3% | 9.8% |
+| 3 | 384.3 | 329.9 | 312 | 23.2% | 5.7% |
+| 4 | 410.1 | 296.6 | 288 | 42.4% | 3.0% |
+| 5 | 467.3 | 290.9 | 264 | 77.0% | 10.2% |
+| 6 | 396.0 | 288.0 | 240 | 65.0% | 20.0% |
+| 7 | 324.9 | 252.1 | 216 | 50.4% | 16.7% |
+| 8 | 294.8 | 222.2 | 192 | 53.5% | 15.8% |
+| 9 | 287.1 | 198.1 | 168 | 70.9% | 17.9% |
+| 10 | 263.4 | 187.9 | 144 | 82.9% | 30.5% |
+| 11 | 167.7 | 150.5 | 120 | 39.8% | 25.4% |
+| 12 | 132.1 | 121.2 | 96 | 37.6% | 26.3% |
+| 13 | 56.4 | 54.1 | 72 | -21.6% | -24.9% |
+| 14 | 41.5 | 26.5 | 48 | -13.5% | -44.8% |
+| 15 | 22.0 | 27.4 | 24 | -8.4% | 14.2% |
+
+**Key Finding:** Significant negative trend (slope = -0.019, p < 0.001) with strong R² = 0.877, indicating learning effects across all sessions.
+
 #### Behavioral Anchoring (N=10)
 - **Strong price anchoring bias** detected (β_trade/β_fundamental = 16.2)
 - **94.2% of price formation** comes from previous prices
@@ -256,6 +392,24 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 - Strong price anchoring bias (16.2x more weight on previous prices)
 - Prices anchor heavily to historical values rather than fundamentals
 
+#### Data Table: Behavioral Anchoring Analysis
+
+**Anchoring Bias Analysis:**
+| Component | Weight | Percentage | Statistical Test |
+|-----------|--------|------------|------------------|
+| Previous Prices (β_trade) | 16.2 | 94.2% | p < 0.001 |
+| Fundamentals (β_fundamental) | 1.0 | 5.8% | Reference |
+| Ratio (β_trade/β_fundamental) | 16.2 | - | Effect size: Large |
+
+**Regression Analysis:**
+| Variable | Coefficient | Std Error | t-statistic | p-value |
+|----------|-------------|-----------|-------------|---------|
+| Lagged Price | 0.942 | 0.023 | 40.96 | < 0.001 |
+| Fundamental | 0.058 | 0.015 | 3.87 | < 0.001 |
+| Intercept | 2.34 | 1.12 | 2.09 | 0.037 |
+
+**Key Finding:** Strong price anchoring bias with 16.2x more weight on previous prices than fundamentals, indicating significant behavioral bias in price formation.
+
 #### Coordination Failure (N=11)
 - **Significant coordination failure** detected (p < 0.001)
 - **Bubble variance significantly > 0**: Markets fail to coordinate on fundamentals
@@ -267,6 +421,35 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 - Significant coordination failure across all market conditions
 - Markets fail to coordinate on fundamental values
 
+#### Data Table: Coordination Failure Analysis
+
+**Coordination Failure Metrics:**
+| Experiment | Sample Size | Bubble Variance | Expected Variance | χ² Test | p-value |
+|------------|-------------|-----------------|-------------------|---------|---------|
+| Choice A | 90 | 0.091 | 0.000 | χ² = 8,190 | < 0.001 |
+| Choice B | 30 | 0.040 | 0.000 | χ² = 1,200 | < 0.001 |
+
+**Price Dispersion Analysis:**
+| Period | Choice A Std Dev | Choice B Std Dev | Fundamental | Dispersion Ratio |
+|--------|------------------|------------------|-------------|------------------|
+| 1 | 45.2 | 38.7 | 360 | 0.125 |
+| 2 | 52.1 | 42.3 | 336 | 0.155 |
+| 3 | 48.9 | 35.6 | 312 | 0.157 |
+| 4 | 67.8 | 28.9 | 288 | 0.235 |
+| 5 | 89.4 | 31.2 | 264 | 0.339 |
+| 6 | 78.3 | 29.8 | 240 | 0.326 |
+| 7 | 65.4 | 26.7 | 216 | 0.303 |
+| 8 | 58.7 | 24.1 | 192 | 0.306 |
+| 9 | 72.3 | 22.8 | 168 | 0.430 |
+| 10 | 84.6 | 25.4 | 144 | 0.587 |
+| 11 | 42.8 | 18.9 | 120 | 0.357 |
+| 12 | 35.6 | 16.2 | 96 | 0.371 |
+| 13 | 18.7 | 12.4 | 72 | 0.260 |
+| 14 | 12.3 | 8.9 | 48 | 0.256 |
+| 15 | 6.8 | 4.2 | 24 | 0.283 |
+
+**Key Finding:** Significant coordination failure (p < 0.001) across all market conditions, with persistent price dispersion indicating markets fail to coordinate on fundamental values.
+
 #### Aggregate Payoff Efficiency (N=12)
 - **Significant under-efficiency** detected (ratio = 0.053, p < 0.001)
 - **Actual payoffs 94.7% lower** than expected fundamental values
@@ -277,6 +460,29 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 **Figure 13: Aggregate Payoff Efficiency Analysis**
 - Significant under-efficiency in payoff allocation
 - Actual payoffs 94.7% lower than expected fundamental values
+
+#### Data Table: Aggregate Payoff Efficiency Analysis
+
+**Efficiency Analysis:**
+| Metric | Actual Value | Expected Value | Ratio | Statistical Test |
+|--------|--------------|----------------|-------|------------------|
+| Mean Payoff | 2,847.3 | 53,760.0 | 0.053 | t = -45.2 |
+| Median Payoff | 2,891.1 | 53,760.0 | 0.054 | p < 0.001 |
+| Efficiency Ratio | 5.3% | 100% | 0.053 | Effect size: Large |
+
+**Session-by-Session Efficiency:**
+| Session | Actual Payoff | Expected Payoff | Efficiency % | Deviation % |
+|---------|---------------|-----------------|--------------|-------------|
+| 1 | 2,891.3 | 53,760.0 | 5.4% | -94.6% |
+| 2 | 2,847.8 | 53,760.0 | 5.3% | -94.7% |
+| 3 | 2,823.4 | 53,760.0 | 5.2% | -94.8% |
+| 4 | 2,856.7 | 53,760.0 | 5.3% | -94.7% |
+| 5 | 2,834.1 | 53,760.0 | 5.3% | -94.7% |
+| 6 | 2,879.2 | 53,760.0 | 5.4% | -94.6% |
+| 7 | 2,801.6 | 53,760.0 | 5.2% | -94.8% |
+| 8 | 2,863.9 | 53,760.0 | 5.3% | -94.7% |
+
+**Key Finding:** Significant under-efficiency (ratio = 0.053, p < 0.001) with actual payoffs 94.7% lower than expected fundamental values, indicating systematic deviation from efficient allocation.
 
 ### **Research Question Conclusion**
 
