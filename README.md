@@ -358,9 +358,8 @@ BehavioralBubbleMkt/
 ## Course Information
 
 - **Course**: MGSC 406 Advanced Experimental Design & Statistics
-- **Institution**: Chapman University
 - **Term**: Fall 2025
-- **Student**: Yixuan
+
 
 ## License
 
