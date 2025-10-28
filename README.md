@@ -88,6 +88,12 @@ Based on behavioral finance literature, this project follows a structured analys
 
 #### Data Table: Last Price Comparison
 
+**计算公式:**
+- **Last Price**: 每个period的最后一笔交易价格
+- **Fundamental**: 期望股息 × 剩余periods = 24 × (16-period)
+- **Bubble**: Last Price - Fundamental
+- **Bubble %**: (Bubble / Fundamental) × 100%
+
 **Time Series Data Table:**
 | Period | Choice A Price | Choice B Price | Fundamental | Choice A Bubble | Choice B Bubble | Choice A Bubble % | Choice B Bubble % |
 |--------|----------------|----------------|-------------|-----------------|-----------------|-------------------|-------------------|
@@ -143,6 +149,13 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 - Large effect sizes (Cohen's d > 0.8) indicate substantial market inefficiency
 
 #### Data Table: Market Efficiency Analysis
+
+**计算公式:**
+- **Avg Price**: 每个period所有交易的平均价格
+- **Fundamental**: 期望股息 × 剩余periods = 24 × (16-period)
+- **Bubble**: Avg Price - Fundamental
+- **Bubble %**: (Bubble / Fundamental) × 100%
+- **Std Dev**: 每个period价格的样本标准差
 
 **Time Series Data Table:**
 | Period | Choice A Price | Choice B Price | Fundamental | Choice A Bubble % | Choice B Bubble % | Choice A Std Dev | Choice B Std Dev |
@@ -203,6 +216,13 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 
 #### Data Table: Information Structure Analysis
 
+**计算公式:**
+- **Mean Bubble**: 所有periods的bubble平均值
+- **Bubble**: (Avg Price - Fundamental) / Fundamental
+- **Std Dev**: 所有periods的bubble标准差
+- **t-test**: 两样本t检验比较Choice A和Choice B的bubble差异
+
+**Summary Statistics:**
 | Experiment | Sample Size | Mean Bubble | Std Dev |
 |------------|-------------|-------------|---------|
 | Choice A   | 90          | 0.302       | 0.302   |
@@ -237,6 +257,13 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 - Professional traders show learning convergence
 
 #### Data Table: Learning Analysis
+
+**计算公式:**
+- **Session Mean Bubble**: 每个session所有periods的bubble平均值
+- **Bubble**: (Avg Price - Fundamental) / Fundamental
+- **Slope**: 线性回归系数，表示每增加一个session，bubble的变化
+- **R-squared**: 回归模型的拟合优度
+- **t-statistic**: 斜率显著性的t检验统计量
 
 **Session-Level Learning Time Series:**
 | Session | Experiment | Mean Bubble | Bubble % | Periods |
@@ -277,6 +304,14 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 
 #### Data Table: Trader Type Analysis
 
+**计算公式:**
+- **Final Payoff**: DivEarn + TradingProfit (股息收入 + 交易利润)
+- **Mean Payoff**: 每个交易员类型的平均最终收益
+- **Std Dev**: 收益的样本标准差
+- **t-test**: 两样本t检验比较专业交易员和学生的收益差异
+- **Cohen's d**: 效应大小 = (μ1 - μ2) / pooled_std
+
+**Trader Performance Statistics:**
 | Trader Type | Sample Size | Mean Payoff | Std Dev | Min | Max |
 |-------------|-------------|-------------|---------|-----|-----|
 | Choice A (Students) | 12 | 43,037.8 | 2,391.1 | 40,114.8 | 47,483.3 |
@@ -302,6 +337,14 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 - Structural luck component affects performance
 
 #### Data Table: Dividend Regime Analysis
+
+**计算公式:**
+- **High Dividend**: 股息为28或60 francs的periods
+- **Low Dividend**: 股息为0或8 francs的periods
+- **Period Payoff**: 每个period的收益 = 股息 + 交易利润
+- **Mean Payoff**: 每个股息水平的平均period收益
+- **ANOVA**: 单因素方差分析比较不同股息水平的收益差异
+- **η²**: 效应大小 = SS_between / SS_total
 
 **Dividend Level Analysis:**
 | Dividend Level | Sample Size | Mean Payoff | Std Dev | Statistical Test |
@@ -337,6 +380,13 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 
 #### Data Table: Bubble-Profit Link Analysis
 
+**计算公式:**
+- **Session Bubble**: 每个session的平均bubble = (Avg Price - Fundamental) / Fundamental
+- **Session Payoff**: 每个session的平均最终收益
+- **Pearson r**: 皮尔逊相关系数 = Σ[(x-μx)(y-μy)] / √[Σ(x-μx)² × Σ(y-μy)²]
+- **Spearman ρ**: 斯皮尔曼等级相关系数，基于排序的相关系数
+- **p-value**: 相关系数显著性的检验
+
 **Correlation Analysis:**
 | Correlation Type | Coefficient | p-value | Sample Size |
 |------------------|-------------|---------|-------------|
@@ -370,6 +420,13 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 - Learning effect across all sessions
 
 #### Data Table: Aggregate Dynamics Analysis
+
+**计算公式:**
+- **Bubble %**: (Avg Price - Fundamental) / Fundamental × 100%
+- **Trend Line %**: 线性回归拟合线，公式为: y = slope × period + intercept
+- **Slope**: 每增加一个period，bubble %的变化量
+- **Intercept**: period=0时的bubble %预测值
+- **R-squared**: 趋势线的拟合优度
 
 **Time Series Trend Analysis:**
 | Period | Choice A Bubble % | Choice B Bubble % | Trend Line % | Choice A Price | Choice B Price |
@@ -411,6 +468,13 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 
 #### Data Table: Behavioral Anchoring Analysis
 
+**计算公式:**
+- **β_trade**: 滞后价格的回归系数，衡量对历史价格的依赖
+- **β_fundamental**: 基本面的回归系数，衡量对基本面的依赖
+- **Anchoring Ratio**: β_trade / β_fundamental，衡量锚定偏差程度
+- **Weight %**: 每个因素在价格形成中的权重百分比
+- **Regression**: Price_t = β_trade × Price_(t-1) + β_fundamental × Fundamental_t + ε
+
 **Anchoring Bias Analysis:**
 | Component | Weight | Percentage | Statistical Test |
 |-----------|--------|------------|------------------|
@@ -439,6 +503,13 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 - Markets fail to coordinate on fundamental values
 
 #### Data Table: Coordination Failure Analysis
+
+**计算公式:**
+- **Bubble Variance**: Var(Bubble) = Σ(Bubble_i - Mean_Bubble)² / (n-1)
+- **Expected Variance**: 在完全协调下，给定基本面时bubble方差应为0
+- **χ² Test**: χ² = Σ(Observed - Expected)² / Expected
+- **Dispersion Ratio**: Std Dev / Fundamental，衡量价格分散程度
+- **Coordination Failure**: 当bubble方差显著大于0时存在协调失败
 
 **Coordination Failure Metrics:**
 | Experiment | Sample Size | Bubble Variance | Expected Variance | χ² Test | p-value |
@@ -479,6 +550,13 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 - Actual payoffs 94.7% lower than expected fundamental values
 
 #### Data Table: Aggregate Payoff Efficiency Analysis
+
+**计算公式:**
+- **Expected Payoff**: 期望收益 = 期望股息 × 总periods = 24 × 15 = 360 francs
+- **Actual Payoff**: 实际平均收益
+- **Efficiency Ratio**: Actual / Expected，衡量效率
+- **Deviation %**: (Actual - Expected) / Expected × 100%
+- **t-test**: 单样本t检验比较实际收益与期望收益的差异
 
 **Efficiency Analysis:**
 | Metric | Actual Value | Expected Value | Ratio | Statistical Test |
