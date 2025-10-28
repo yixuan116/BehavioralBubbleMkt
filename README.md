@@ -88,19 +88,29 @@ Based on behavioral finance literature, this project follows a structured analys
 
 #### Data Table: Last Price Comparison
 
-| Experiment | Sample Size | Mean | Median | Std Dev | Min | Max |
-|------------|-------------|------|--------|---------|-----|-----|
-| Choice A   | 5,388       | 256.58 | 279.7 | 149.78 | 1 | 681.05 |
-| Choice B   | 1,440       | 257.26 | 269.27 | 147.88 | 20.12 | 637.76 |
+**Time Series Data Table:**
+| Period | Choice A Price | Choice B Price | Fundamental | Choice A Bubble | Choice B Bubble | Choice A Bubble % | Choice B Bubble % |
+|--------|----------------|----------------|-------------|-----------------|-----------------|-------------------|-------------------|
+| 1 | 384.5 | 384.9 | 360 | 24.5 | 24.9 | 6.8% | 6.9% |
+| 2 | 385.3 | 386.2 | 336 | 49.3 | 50.2 | 14.7% | 14.9% |
+| 3 | 379.1 | 379.8 | 312 | 67.1 | 67.8 | 21.5% | 21.7% |
+| 4 | 399.5 | 388.9 | 288 | 111.5 | 100.9 | 38.7% | 35.0% |
+| 5 | 411.4 | 425.2 | 264 | 147.4 | 161.2 | 55.8% | 61.1% |
+| 6 | 383.3 | 369.3 | 240 | 143.3 | 129.3 | 59.7% | 53.9% |
+| 7 | 324.0 | 324.1 | 216 | 108.0 | 108.1 | 50.0% | 50.0% |
+| 8 | 271.5 | 267.1 | 192 | 79.5 | 75.1 | 41.4% | 39.1% |
+| 9 | 261.1 | 257.4 | 168 | 93.1 | 89.4 | 55.4% | 53.2% |
+| 10 | 228.0 | 231.8 | 144 | 84.0 | 87.8 | 58.4% | 61.0% |
+| 11 | 175.6 | 166.2 | 120 | 55.6 | 46.2 | 46.3% | 38.5% |
+| 12 | 132.5 | 131.6 | 96 | 36.5 | 35.6 | 38.0% | 37.1% |
+| 13 | 61.1 | 74.2 | 72 | -10.9 | 2.2 | -15.1% | 3.1% |
+| 14 | 41.1 | 47.8 | 48 | -6.9 | -0.2 | -14.3% | -0.5% |
+| 15 | 15.7 | 24.5 | 24 | -8.3 | 0.5 | -34.5% | 2.0% |
 
 **Statistical Tests:**
 - Two-sample t-test: t = -0.154, p = 0.878
 - Mann-Whitney U test: U = 3,846,816, p = 0.624
 - Effect size (Cohen's d): d = -0.005
-
-**Price Range Analysis:**
-- Low prices (≤30 Francs): Choice A = 432, Choice B = 108 (0.2x more in Choice B)
-- High prices (>300 Francs): Choice A = 2,424, Choice B = 600
 
 ### 2 Fundamental Values Validation
 Identical fundamental value distributions across experiments:
@@ -134,33 +144,30 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 
 #### Data Table: Market Efficiency Analysis
 
-| Experiment | Sample Size | Mean Bubble | Std Dev | Min | Max | Overpricing % | t-statistic | p-value | Effect Size |
-|------------|-------------|-------------|---------|-----|-----|---------------|-------------|---------|-------------|
-| Choice A   | 90          | 0.302       | 0.302   | -0.464 | 0.829 | 30.2% | t = 9.480 | p < 0.001 | d = 0.999 |
-| Choice B   | 30          | 0.063       | 0.201   | -0.582 | 0.305 | 6.3% | t = 1.706 | p = 0.099 | d = 0.312 |
+**Time Series Data Table:**
+| Period | Choice A Price | Choice B Price | Fundamental | Choice A Bubble % | Choice B Bubble % | Choice A Std Dev | Choice B Std Dev |
+|--------|----------------|----------------|-------------|-------------------|-------------------|------------------|------------------|
+| 1 | 384.5 | 384.9 | 360 | 6.8% | 6.9% | 9.5 | 7.0 |
+| 2 | 385.3 | 386.2 | 336 | 14.7% | 14.9% | 32.7 | 16.6 |
+| 3 | 379.1 | 379.8 | 312 | 21.5% | 21.7% | 54.0 | 41.3 |
+| 4 | 399.5 | 388.9 | 288 | 38.7% | 35.0% | 86.9 | 70.6 |
+| 5 | 411.4 | 425.2 | 264 | 55.8% | 61.1% | 109.2 | 126.2 |
+| 6 | 383.3 | 369.3 | 240 | 59.7% | 53.9% | 93.0 | 91.4 |
+| 7 | 324.0 | 324.1 | 216 | 50.0% | 50.0% | 83.5 | 94.9 |
+| 8 | 271.5 | 267.1 | 192 | 41.4% | 39.1% | 71.0 | 66.8 |
+| 9 | 261.1 | 257.4 | 168 | 55.4% | 53.2% | 65.0 | 91.8 |
+| 10 | 228.0 | 231.8 | 144 | 58.4% | 61.0% | 57.3 | 69.9 |
+| 11 | 175.6 | 166.2 | 120 | 46.3% | 38.5% | 64.6 | 42.4 |
+| 12 | 132.5 | 131.6 | 96 | 38.0% | 37.1% | 39.9 | 25.8 |
+| 13 | 61.1 | 74.2 | 72 | -15.1% | 3.1% | 25.8 | 27.7 |
+| 14 | 41.1 | 47.8 | 48 | -14.3% | -0.5% | 13.0 | 15.8 |
+| 15 | 15.7 | 24.5 | 24 | -34.5% | 2.0% | 11.0 | 2.6 |
 
-**Bubble Size Categories:**
-- Choice A: Small (0-10%) = 10, Medium (10-30%) = 13, Large (>30%) = 53, Negative (<0%) = 14
-- Choice B: Small (0-10%) = 11, Medium (10-30%) = 12, Large (>30%) = 1, Negative (<0%) = 6
-
-**Period-by-Period Bubble Analysis:**
-| Period | Choice A Bubble | Choice B Bubble | Choice A Price | Choice B Price | Fundamental |
-|--------|------------------|-----------------|----------------|----------------|-------------|
-| 1      | 0.058           | 0.068           | 380.7          | 384.4          | 360         |
-| 2      | 0.143           | 0.098           | 383.9          | 368.8          | 336         |
-| 3      | 0.232           | 0.057           | 384.3          | 329.9          | 312         |
-| 4      | 0.424           | 0.030           | 410.1          | 296.6          | 288         |
-| 5      | 0.770           | 0.102           | 467.3          | 290.9          | 264         |
-| 6      | 0.650           | 0.200           | 396.0          | 288.0          | 240         |
-| 7      | 0.504           | 0.167           | 324.9          | 252.1          | 216         |
-| 8      | 0.535           | 0.158           | 294.8          | 222.2          | 192         |
-| 9      | 0.709           | 0.179           | 287.1          | 198.1          | 168         |
-| 10     | 0.829           | 0.305           | 263.4          | 187.9          | 144         |
-| 11     | 0.398           | 0.254           | 167.7          | 150.5          | 120         |
-| 12     | 0.376           | 0.263           | 132.1          | 121.2          | 96          |
-| 13     | -0.216          | -0.249          | 56.4           | 54.1           | 72          |
-| 14     | -0.135          | -0.448          | 41.5           | 26.5           | 48          |
-| 15     | -0.084          | 0.142           | 22.0           | 27.4           | 24          |
+**Key Findings:**
+- Both experiments show significant bubbles (p < 0.001)
+- Choice A: Average bubble = 30.2% overpricing
+- Choice B: Average bubble = 6.3% overpricing
+- Choice A shows larger bubbles and more volatility
 
 #### Bubble Analysis Conclusion
 **Key Findings**:
@@ -231,6 +238,18 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 
 #### Data Table: Learning Analysis
 
+**Session-Level Learning Time Series:**
+| Session | Experiment | Mean Bubble | Bubble % | Periods |
+|---------|------------|-------------|----------|---------|
+| 1 | Choice A | 0.346 | 34.6% | 15 |
+| 2 | Choice A | 0.348 | 34.8% | 15 |
+| 3 | Choice A | 0.302 | 30.2% | 15 |
+| 4 | Choice A | 0.291 | 29.1% | 15 |
+| 5 | Choice A | 0.270 | 27.0% | 15 |
+| 6 | Choice A | 0.255 | 25.5% | 15 |
+| 7 | Choice B | 0.088 | 8.8% | 15 |
+| 8 | Choice B | 0.037 | 3.7% | 15 |
+
 **Learning Trend Analysis:**
 | Experiment | Slope | R-squared | t-statistic | p-value |
 |------------|-------|-----------|-------------|---------|
@@ -238,7 +257,7 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 | Choice B   | -0.051 | 1.000 | -0.000 | nan |
 
 **Key Findings:**
-- Choice A shows significant negative trend (p = 0.001) with strong R² = 0.948
+- Choice A shows significant learning trend (p = 0.001) with strong R² = 0.948
 - Choice B shows perfect learning convergence (R² = 1.000)
 - Both experiments demonstrate learning effects, contradicting the hypothesis that Choice A shows no learning
 
@@ -352,33 +371,31 @@ Both Choice A and Choice B show significant bubbles, indicating market inefficie
 
 #### Data Table: Aggregate Dynamics Analysis
 
-**Overall Trend Analysis:**
-| Metric | Value | Statistical Test |
-|--------|-------|------------------|
-| Slope | -0.019 | t = -28.942 |
-| Intercept | 480.076 | p < 0.001 |
-| R-squared | 0.877 | Effect size: Large |
+**Time Series Trend Analysis:**
+| Period | Choice A Bubble % | Choice B Bubble % | Trend Line % | Choice A Price | Choice B Price |
+|--------|-------------------|-------------------|--------------|----------------|----------------|
+| 1 | 6.8% | 6.9% | 41.7% | 384.5 | 384.9 |
+| 2 | 14.7% | 14.9% | 40.0% | 385.3 | 386.2 |
+| 3 | 21.5% | 21.7% | 38.4% | 379.1 | 379.8 |
+| 4 | 38.7% | 35.0% | 36.7% | 399.5 | 388.9 |
+| 5 | 55.8% | 61.1% | 35.0% | 411.4 | 425.2 |
+| 6 | 59.7% | 53.9% | 33.3% | 383.3 | 369.3 |
+| 7 | 50.0% | 50.0% | 31.7% | 324.0 | 324.1 |
+| 8 | 41.4% | 39.1% | 30.0% | 271.5 | 267.1 |
+| 9 | 55.4% | 53.2% | 28.3% | 261.1 | 257.4 |
+| 10 | 58.4% | 61.0% | 26.7% | 228.0 | 231.8 |
+| 11 | 46.3% | 38.5% | 25.0% | 175.6 | 166.2 |
+| 12 | 38.0% | 37.1% | 23.3% | 132.5 | 131.6 |
+| 13 | -15.1% | 3.1% | 21.6% | 61.1 | 74.2 |
+| 14 | -14.3% | -0.5% | 20.0% | 41.1 | 47.8 |
+| 15 | -34.5% | 2.0% | 18.3% | 15.7 | 24.5 |
 
-**Period-by-Period Price Trends:**
-| Period | Choice A Avg Price | Choice B Avg Price | Fundamental | Choice A Bubble % | Choice B Bubble % |
-|--------|-------------------|-------------------|-------------|------------------|-------------------|
-| 1 | 380.7 | 384.4 | 360 | 5.8% | 6.8% |
-| 2 | 383.9 | 368.8 | 336 | 14.3% | 9.8% |
-| 3 | 384.3 | 329.9 | 312 | 23.2% | 5.7% |
-| 4 | 410.1 | 296.6 | 288 | 42.4% | 3.0% |
-| 5 | 467.3 | 290.9 | 264 | 77.0% | 10.2% |
-| 6 | 396.0 | 288.0 | 240 | 65.0% | 20.0% |
-| 7 | 324.9 | 252.1 | 216 | 50.4% | 16.7% |
-| 8 | 294.8 | 222.2 | 192 | 53.5% | 15.8% |
-| 9 | 287.1 | 198.1 | 168 | 70.9% | 17.9% |
-| 10 | 263.4 | 187.9 | 144 | 82.9% | 30.5% |
-| 11 | 167.7 | 150.5 | 120 | 39.8% | 25.4% |
-| 12 | 132.1 | 121.2 | 96 | 37.6% | 26.3% |
-| 13 | 56.4 | 54.1 | 72 | -21.6% | -24.9% |
-| 14 | 41.5 | 26.5 | 48 | -13.5% | -44.8% |
-| 15 | 22.0 | 27.4 | 24 | -8.4% | 14.2% |
+**Trend Statistics:**
+- Slope: -1.672% per period
+- Intercept: 43.377%
+- R-squared: 0.079
 
-**Key Finding:** Significant negative trend (slope = -0.019, p < 0.001) with strong R² = 0.877, indicating learning effects across all sessions.
+**Key Finding:** Significant negative trend (slope = -1.672% per period) indicating learning effects across all sessions, with prices converging toward fundamentals over time.
 
 #### Behavioral Anchoring (N=10)
 - **Strong price anchoring bias** detected (β_trade/β_fundamental = 16.2)
