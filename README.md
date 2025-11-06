@@ -99,6 +99,62 @@ The analysis reveals that while both experimental conditions generate bubbles, *
 ## Analysis Framework
 
 Based on behavioral finance literature, this project follows a structured analysis framework across four analytical layers:
+ 
+---
+
+## Event-time Reaction to Dividend = 0
+
+### A vs B (event-time line)
+
+![Event-time A vs B](event_time_line_A_vs_B.png)
+
+- **Setup**: Filter Dividend = 0 periods. Define event time τ with τ=0 as the shock period; τ=+1 and τ=+2 are the next two periods. Compute Bubble% averages at τ ∈ {0, +1, +2} for Choice A and Choice B; error bars show standard error.
+- **Read**: Compare the drop at τ=0 and the revert speed at τ=+1, +2 between A and B.
+- **Results**: Both A and B show significant deviations from 0 at τ=0 (one-sample t, p < 1e-4). A vs B reaction size at τ=0 is not significantly different (Welch t-test p = 0.405; Mann–Whitney p = 0.579). No strong evidence of mean reversion from τ=0 to τ=+2.
+
+### A-only: Reaction by Market (learning)
+
+![A Market Impact](event_time_A_market_impact.png)
+
+- **Metric**: Shock impact = Bubble%(τ=0). Underreaction = Bubble%(τ=0) − Bubble%(τ=+2).
+- **Result**: Shock impact decreases with market index (slope = −19.14 Bubble% per market, R² = 0.89, p = 0.015), consistent with learning.
+
+### B-only: Reaction vs Professional Share
+
+![B Impact vs ProShare](event_time_B_impact_vs_proshare.png)
+
+- **Metric**: For each session, compute Shock impact at τ=0 and regress on Professional Share (%).
+- **Result**: Significant negative relation (slope = −0.88 Bubble% per 1% ProShare, R² = 0.87, p = 0.0008). Higher professional share → milder reaction to Dividend = 0.
+
+### Hypotheses and Tests (English)
+
+- **H0 (Reaction size)**: Mean Bubble% at τ=0 equals 0. Test: one-sample t. Result: reject H0 for A and B (p < 1e-4).
+- **H0 (A vs B)**: Mean reaction at τ=0 is equal between A and B. Test: Welch two-sample t; Mann–Whitney U. Result: fail to reject (p ≈ 0.41 / 0.58).
+- **H0 (Persistence)**: Bubble% at τ=+1 or τ=+2 equals 0; or Bubble%(τ=0) − Bubble%(τ=+2) = 0. Test: one-sample t. Result: no strong mean-reversion evidence.
+- **H0 (Learning in A)**: Reaction does not decrease with market index. Test: slope < 0 (OLS). Result: reject (p = 0.015).
+- **H0 (Professional effect in B)**: Reaction unrelated to ProShare. Test: correlation/OLS. Result: reject (p = 0.0008, negative).
+
+### Pairwise Mann-Whitney U Tests: Session-Level Consistency (Choice B)
+
+Pairwise comparisons between sessions with the same professional share percentage to test session-level consistency within each treatment group.
+
+**Hypothesis**: H₀: Bubble% distributions are equal between paired sessions vs H₁: Distributions differ
+
+**Test Results:**
+
+| Pair Comparison | U-statistic | p-value | Significant (α=0.05) |
+|----------------|-------------|---------|---------------------|
+| S1_25 vs S2_25 | 121.5 | 0.724 | No |
+| S3_50 vs S4_50 | 127.0 | 0.561 | No |
+| S5_75 vs S6_75 | 108.0 | 0.868 | No |
+| S7_100 vs S8_100 | 136.5 | 0.329 | No |
+
+**Interpretation:**
+- All pairwise comparisons within the same professional share percentage groups are **not statistically significant** (all p > 0.05).
+- This indicates **consistent Bubble% distributions** between paired sessions within each treatment group (25%, 50%, 75%, 100% professional share).
+- The lack of significant differences suggests that session-level variation is not driving the observed professional share effects.
+
+---
 
 | Layer | N | Behavioral Idea | Hypothesis (H0 vs H1) | Test Type | Data Used | Expected Direction/Evidence |
 |-------|---|-----------------|----------------------|-----------|-----------|---------------------------|
