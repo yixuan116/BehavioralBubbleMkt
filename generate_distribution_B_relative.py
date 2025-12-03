@@ -1,6 +1,6 @@
 """
 ================================================================================
-Google Colab - Ready to Run Version (Data Embedded)
+Google Colab - Ready to Run Version (Data Embedded) - Relative/Percentage Version
 ================================================================================
 This script automatically:
 1. Installs required dependencies
@@ -10,7 +10,7 @@ This script automatically:
 Generated files:
 - figs/mc_null_distribution.png
 - choiceB_scatter_absolute.png
-- distribution_B_absolute.png
+- distribution_B_relative.png
 
 Note: All data is embedded directly in this script. No file uploads required!
 ================================================================================
@@ -53,7 +53,6 @@ import io
 import numpy as np
 import pandas as pd
 import matplotlib
-import seaborn as sns
 
 # For Colab, no need to set 'Agg' backend
 if not IN_COLAB:
@@ -63,6 +62,7 @@ if not IN_COLAB:
         pass
 
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 # ============================================================================
 # Embedded CSV Data
@@ -79,8 +79,6 @@ PARTB_SESSIONS_CSV = """session,Bubble,pro_share
 8,3.6940017698351033,1.0
 """
 
-# Note: EXPERIMENT_B_TRADING_CSV is loaded from file if exists, otherwise embedded
-# For full embedding, uncomment and paste the full CSV content below
 EXPERIMENT_B_TRADING_CSV_EMBEDDED = """Session,Period,SubjectID,Role,ProShare,Cash_pre,Shares_pre,LastPrice,Fundamental,Dividend,UnitsBuy,UnitsSell,AvgBuyPrice,AvgSellPrice,TradingProfit,Shares_t,Cash_t,DivEarn
 1,1,1,Pro,0.25,600.0,4,392.15000000000003,360,28,1,0,392.15000000000003,0.0,-392.15000000000003,5,347.85,140
 1,1,2,Pro,0.25,600.0,4,392.15000000000003,360,28,0,0,0.0,0.0,0.0,4,712.0,112
@@ -1533,6 +1531,7 @@ else:
     # Use embedded data
     EXPERIMENT_B_TRADING_CSV = EXPERIMENT_B_TRADING_CSV_EMBEDDED
     print("✓ Using embedded Experiment_B_Trading_Data.csv")
+
 FIG_DIR = 'figs'
 SCATTER_OUTPUT = 'choiceB_scatter_absolute.png'
 PRO_LOW = {0.25, 0.50}
@@ -1626,66 +1625,6 @@ def plot_absolute_scatter(session_summary):
     return low_mean, high_mean
 
 
-def plot_distribution_B():
-    """Plot distribution of Bubble absolute amount for Choice B."""
-    # Load data from embedded CSV
-    raw = pd.read_csv(io.StringIO(EXPERIMENT_B_TRADING_CSV))
-    
-    # Filter out rows where Fundamental is 0
-    df_b = raw[raw['Fundamental'] > 0].copy()
-    
-    # Calculate Bubble absolute amount (not percentage)
-    df_b['BubbleAbs'] = df_b['LastPrice'] - df_b['Fundamental']
-    
-    # Drop NaNs in BubbleAbs
-    df_b = df_b.dropna(subset=['BubbleAbs'])
-    
-    # Set style
-    sns.set_theme(style="whitegrid")
-    
-    # Plot B
-    plt.figure(figsize=(10, 6))
-    sns.histplot(data=df_b, x='BubbleAbs', color='orange', label='Choice B', kde=True, stat="density", alpha=0.4)
-    
-    mean_b = df_b['BubbleAbs'].mean()
-    median_b = df_b['BubbleAbs'].median()
-    std_b = df_b['BubbleAbs'].std()
-    min_b = df_b['BubbleAbs'].min()
-    max_b = df_b['BubbleAbs'].max()
-    count_b = len(df_b)
-    
-    # Mean line and text
-    plt.axvline(mean_b, color='darkorange', linestyle='--', linewidth=2, alpha=0.8)
-    plt.text(mean_b + 2, plt.gca().get_ylim()[1] * 0.9, f'Mean: {mean_b:.1f}', color='darkorange', fontweight='bold', rotation=0)
-    
-    # Median line and text
-    plt.axvline(median_b, color='green', linestyle=':', linewidth=2, alpha=0.8)
-    plt.text(median_b - 2, plt.gca().get_ylim()[1] * 0.8, f'Median: {median_b:.1f}', color='green', fontweight='bold', rotation=0, ha='right')
-    
-    # Min/Max markers on X-axis
-    plt.plot(min_b, 0, marker='^', color='red', markersize=10)
-    plt.text(min_b, plt.gca().get_ylim()[1] * 0.02, f'Min: {min_b:.1f}', color='red', ha='center', va='bottom', fontsize=10)
-    
-    plt.plot(max_b, 0, marker='^', color='red', markersize=10)
-    plt.text(max_b, plt.gca().get_ylim()[1] * 0.02, f'Max: {max_b:.1f}', color='red', ha='center', va='bottom', fontsize=10)
-
-    # N and Std in a text block
-    info_text = f"N: {count_b}\nStd: {std_b:.1f}"
-    plt.text(0.02, 0.95, info_text, transform=plt.gca().transAxes, fontsize=12, fontweight='bold', 
-             verticalalignment='top', bbox=dict(boxstyle='round,pad=0.5', facecolor='white', alpha=0.8, edgecolor='gray'))
-    
-    plt.title('Distribution of Bubble (Absolute Amount) - Choice B', fontsize=14, fontweight='bold')
-    plt.xlabel('Bubble (Absolute Mispricing)', fontsize=12)
-    plt.ylabel('Density', fontsize=12)
-    plt.tight_layout()
-    plt.savefig('distribution_B_absolute.png', dpi=300)
-    plt.close()
-    
-    print("✓ Chart saved to distribution_B_absolute.png")
-    
-    return df_b
-
-
 def run_low_high_mc_test(df: pd.DataFrame, n_perm: int = 50_000) -> dict:
     """
     Monte Carlo permutation test comparing LOW_PRO (25%+50%) vs
@@ -1730,11 +1669,71 @@ def run_low_high_mc_test(df: pd.DataFrame, n_perm: int = 50_000) -> dict:
     }
 
 
+def plot_distribution_B_relative():
+    """Plot distribution of Bubble % (relative/percentage) for Choice B."""
+    # Load data from embedded CSV
+    raw = pd.read_csv(io.StringIO(EXPERIMENT_B_TRADING_CSV))
+    
+    # Filter out rows where Fundamental is 0
+    df_b = raw[raw['Fundamental'] > 0].copy()
+    
+    # Calculate Bubble % (relative/percentage)
+    df_b['BubblePct'] = ((df_b['LastPrice'] - df_b['Fundamental']) / df_b['Fundamental']) * 100
+    
+    # Drop NaNs in BubblePct
+    df_b = df_b.dropna(subset=['BubblePct'])
+    
+    # Set style
+    sns.set_theme(style="whitegrid")
+    
+    # Plot B
+    plt.figure(figsize=(10, 6))
+    sns.histplot(data=df_b, x='BubblePct', color='orange', label='Choice B', kde=True, stat="density", alpha=0.4)
+    
+    mean_b = df_b['BubblePct'].mean()
+    median_b = df_b['BubblePct'].median()
+    std_b = df_b['BubblePct'].std()
+    min_b = df_b['BubblePct'].min()
+    max_b = df_b['BubblePct'].max()
+    count_b = len(df_b)
+    
+    # Mean line and text
+    plt.axvline(mean_b, color='darkorange', linestyle='--', linewidth=2, alpha=0.8)
+    plt.text(mean_b + 2, plt.gca().get_ylim()[1] * 0.9, f'Mean: {mean_b:.1f}%', color='darkorange', fontweight='bold', rotation=0)
+    
+    # Median line and text
+    plt.axvline(median_b, color='green', linestyle=':', linewidth=2, alpha=0.8)
+    plt.text(median_b - 2, plt.gca().get_ylim()[1] * 0.8, f'Median: {median_b:.1f}%', color='green', fontweight='bold', rotation=0, ha='right')
+    
+    # Min/Max markers on X-axis
+    plt.plot(min_b, 0, marker='^', color='red', markersize=10)
+    plt.text(min_b, plt.gca().get_ylim()[1] * 0.02, f'Min: {min_b:.1f}%', color='red', ha='center', va='bottom', fontsize=10)
+    
+    plt.plot(max_b, 0, marker='^', color='red', markersize=10)
+    plt.text(max_b, plt.gca().get_ylim()[1] * 0.02, f'Max: {max_b:.1f}%', color='red', ha='center', va='bottom', fontsize=10)
+
+    # N and Std in a text block
+    info_text = f"N: {count_b}\nStd: {std_b:.1f}%"
+    plt.text(0.02, 0.95, info_text, transform=plt.gca().transAxes, fontsize=12, fontweight='bold', 
+             verticalalignment='top', bbox=dict(boxstyle='round,pad=0.5', facecolor='white', alpha=0.8, edgecolor='gray'))
+    
+    plt.title('Distribution of Bubble % (Relative) - Choice B', fontsize=14, fontweight='bold')
+    plt.xlabel('Bubble % (Deviation from Fundamental)', fontsize=12)
+    plt.ylabel('Density', fontsize=12)
+    plt.tight_layout()
+    plt.savefig('distribution_B_relative.png', dpi=300)
+    plt.close()
+    
+    print("✓ Chart saved to distribution_B_relative.png")
+    
+    return df_b
+
+
 def main():
     """Generate three figures:
     1. Monte Carlo Null Distribution of T (LOW_PRO vs HIGH_PRO)
-    2. Bubble Size vs Professional Share (scatter plot)
-    3. Distribution of Bubble % - Choice B
+    2. Bubble Size vs Professional Share (scatter plot - absolute)
+    3. Distribution of Bubble % (Relative) - Choice B
     """
     # Load data from embedded CSV
     df = pd.read_csv(io.StringIO(PARTB_SESSIONS_CSV))
@@ -1778,7 +1777,7 @@ def main():
     print(f"✓ Saved: {null_path}")
     
     # ============================================================================
-    # Figure 2: Bubble Size vs Professional Share (Scatter Plot)
+    # Figure 2: Bubble Size vs Professional Share (Scatter Plot - Absolute)
     # ============================================================================
     print("\nGenerating Bubble Size vs Professional Share scatter plot...")
     session_summary = compute_choiceb_absolute_bubbles()
@@ -1794,15 +1793,15 @@ def main():
     print(f"✓ Saved: {SCATTER_OUTPUT}")
     
     # ============================================================================
-    # Figure 3: Distribution of Bubble (Absolute Amount) - Choice B
+    # Figure 3: Distribution of Bubble % (Relative) - Choice B
     # ============================================================================
-    print("\nGenerating Distribution of Bubble (Absolute Amount) - Choice B...")
-    plot_distribution_B()
+    print("\nGenerating Distribution of Bubble % (Relative) - Choice B...")
+    plot_distribution_B_relative()
     
     # Display image in Colab
     if IN_COLAB:
         from IPython.display import Image, display
-        display(Image('distribution_B_absolute.png'))
+        display(Image('distribution_B_relative.png'))
     
     print("\n" + "=" * 60)
     print("Done! All three figures have been generated.")
@@ -1811,4 +1810,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
